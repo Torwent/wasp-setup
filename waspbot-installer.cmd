@@ -7,6 +7,7 @@ CURL -L https://github.com/ollydev/Simba/releases/download/simba1400-lape-update
 MKDIR Simba\Data
 MKDIR Simba\Data\packages
 MKDIR Simba\Includes
+MKDIR Simba\Scripts
 
 CHOICE /C YN /D Y /T 5 /M "Do you want to install the unofficial SRL?"
 SET OFFICIAL=%ERRORLEVEL%
@@ -28,6 +29,7 @@ GOTO :INSTALL_SRL
 GOTO :INSTALL_SRL
 
 :INSTALL_SRL
+	ECHO Installing SRL...
 	ECHO Name=SRL>>Simba\Data\packages\packages.ini
 	CURL -L %SRL_LINK% > srl.zip
 	TAR -xf srl.zip
@@ -35,16 +37,38 @@ GOTO :INSTALL_SRL
 	MOVE SRL* Simba\Includes\SRL
 	
 :INSTALL_WL
+	ECHO Installing WaspLib...
 	CURL -L https://github.com/Torwent/WaspLib/archive/refs/heads/master.zip > wl.zip
 	TAR -xf wl.zip
 	DEL wl.zip
-	RENAME WaspLib-master WaspLib
-	MOVE WaspLib Simba\Includes\WaspLib
+	MOVE WaspLib-master Simba\Includes\WaspLib
 	ECHO [Torwent/WaspLib]>>Simba\Data\packages\packages.ini
 	ECHO Name=WaspLib>>Simba\Data\packages\packages.ini
 
-CHOICE /C YN /D Y /M "Do you want to keep git files? They are not required to use the scripts."
-IF %ERRORLEVEL% EQU 1 GOTO :DELETE_GIT_FILES
-IF %ERRORLEVEL% EQU 2 GOTO :EOF
+CHOICE /C YN /D Y /T 5 /M "Do you want to install the free scripts?"
+IF %ERRORLEVEL% EQU 1 GOTO :INSTALL_FREE_SCRIPTS
+IF %ERRORLEVEL% EQU 2 GOTO :NEXT_CHOICE
 
-PAUSE
+:INSTALL_FREE_SCRIPTS
+	ECHO Installing FreeWaspBots...
+	CURL -L https://github.com/Torwent/FreeWaspBots/archive/refs/heads/master.zip > fwb.zip
+	TAR -xf fwb.zip
+	DEL fwb.zip
+	MOVE FreeWaspBots-master Simba\Scripts\FreeWaspBots
+	ECHO [Torwent/FreeWaspBots]>>Simba\Data\packages\packages.ini
+	ECHO Name=FreeWaspBots>>Simba\Data\packages\packages.ini
+	
+:NEXT_CHOICE
+	CHOICE /C YN /D N /T 15 /M "Do you want to install the mini scripts? This scripts are not maintaned, may have bugs and can get you banned."
+	IF %ERRORLEVEL% EQU 1 GOTO :INSTALL_MINI_SCRIPTS
+	IF %ERRORLEVEL% EQU 2 GOTO :EOF
+	
+:INSTALL_MINI_SCRIPTS
+	ECHO Installing MiniWaspBots...
+	CURL -L https://github.com/Torwent/MiniWaspBots/archive/refs/heads/master.zip > mwb.zip
+	TAR -xf mwb.zip
+	DEL mwb.zip
+	MOVE MiniWaspBots-master Simba\Scripts\MiniWaspBots
+	ECHO [Torwent/MiniWaspBots]>>Simba\Data\packages\packages.ini
+	ECHO Name=MiniWaspBots>>Simba\Data\packages\packages.ini
+	
