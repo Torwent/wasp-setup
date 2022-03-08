@@ -1,3 +1,12 @@
+## [0.1.2](https://github.com/Torwent/waspbot-setup/compare/v0.1.1...v0.1.2) (2022-03-08)
+
+
+### Bug Fixes
+
+* gh action ([84f0ca8](https://github.com/Torwent/waspbot-setup/commit/84f0ca8be292c39595b380090a71baea4f7ec70b))
+
+
+
 ## [0.1.1](https://github.com/Torwent/waspbot-setup/compare/v0.1.0...v0.1.1) (2022-03-08)
 
 
