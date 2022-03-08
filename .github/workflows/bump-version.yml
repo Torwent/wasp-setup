@@ -49,16 +49,3 @@ jobs:
           LICENSE
           *.cmd
           *.sh
-        
-    - name: Create latest release
-      uses: "marvinpinto/action-automatic-releases@latest"
-      with:     
-        if: ${{ steps.changelog.outputs.skipped == 'false' }}
-        repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        automatic_release_tag: "latest"
-        prerelease: false
-        title: "Latest release"
-        files: |
-          LICENSE
-          *.cmd
-          *.sh
