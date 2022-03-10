@@ -49,3 +49,4 @@ jobs:
           LICENSE
           *.cmd
           *.sh
+          *.command
