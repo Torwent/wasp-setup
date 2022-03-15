@@ -1,13 +1,36 @@
 @ECHO OFF
 
-ECHO Downloading Simba
-MKDIR Simba
-CURL -L https://github.com/ollydev/Simba/releases/download/simba1400-lape-update/Simba-Win32.exe > Simba/Simba.exe
+SET locase=for /L %%n in (1 1 2) do if %%n==2 ( for %%# in (a b c d e f g h i j k l m n o p q r s t u v w x y z) do set "result=!result:%%#=%%#!") ELSE setlocal enableDelayedExpansion ^& set result=
 
-MKDIR Simba\Data
-MKDIR Simba\Data\packages
-MKDIR Simba\Includes
-MKDIR Simba\Scripts
+:CHECK_DIR
+for %%I in (.) do SET CURRENT_DIR=%%~nxI
+%locase%%CURRENT_DIR%
+IF "%result%" == "simba" GOTO :CURRENTLY_IN_SIMBA
+IF exist simba\ GOTO :DIR_EXISTS
+IF exist simba\ GOTO :DIR_EXISTS
+GOTO :MAKE_DIRECTORY_TREE
+
+:CURRENTLY_IN_SIMBA
+	ECHO Directory exists and we are in it.
+	ECHO Please delete the Simba folder and run this again.
+	PAUSE
+GOTO :EOF
+
+:DIR_EXISTS
+	ECHO Directory exists
+	ECHO Please delete the Simba folder and run this again.
+	PAUSE
+GOTO :EOF
+
+:MAKE_DIRECTORY_TREE
+	MKDIR Simba
+	MKDIR Simba\Data
+	MKDIR Simba\Data\packages
+	MKDIR Simba\Includes
+	MKDIR Simba\Scripts
+
+ECHO Downloading Simba
+CURL -L https://github.com/ollydev/Simba/releases/latest/download/Simba-Win32.exe > Simba/Simba.exe
 
 CHOICE /C YN /D Y /T 5 /M "Do you want to install the unofficial SRL?"
 IF %ERRORLEVEL% EQU 1 GOTO :UNOFFICIAL_SRL
