@@ -1,2 +1,2 @@
-# waspbot-setup
- Automated waspbot setup script
+# wasp-setup
+ Automated WaspScripts setup script
