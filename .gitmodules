@@ -1,0 +1,9 @@
+[submodule "Scripts/wasp-free"]
+	path = Scripts/wasp-free
+	url = https://github.com/Torwent/wasp-free.git
+[submodule "Includes/SRL"]
+	path = Includes/SRL
+	url = https://github.com/Torwent/SRL.git
+[submodule "Includes/WaspLib"]
+	path = Includes/WaspLib
+	url = https://github.com/Torwent/WaspLib.git
