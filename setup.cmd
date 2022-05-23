@@ -70,13 +70,13 @@ IF %ERRORLEVEL% EQU 1 GOTO :INSTALL_FREE_SCRIPTS
 IF %ERRORLEVEL% EQU 2 GOTO :NEXT_CHOICE
 
 :INSTALL_FREE_SCRIPTS
-	ECHO Installing FreeWaspBots...
-	CURL -L https://github.com/Torwent/FreeWaspBots/archive/refs/heads/master.zip > fwb.zip
+	ECHO Installing Wasp Free Scripts...
+	CURL -L https://github.com/Torwent/wasp-free/archive/refs/heads/master.zip > fwb.zip
 	TAR -xf fwb.zip
 	DEL fwb.zip
-	MOVE FreeWaspBots-master Simba\Scripts\FreeWaspBots
-	ECHO [Torwent/FreeWaspBots]>>Simba\Data\packages\packages.ini
-	ECHO Name=FreeWaspBots>>Simba\Data\packages\packages.ini
+	MOVE wasp-free-master Simba\Scripts\wasp-free
+	ECHO [Torwent/wasp-free]>>Simba\Data\packages\packages.ini
+	ECHO Name=wasp-free>>Simba\Data\packages\packages.ini
 	
 :NEXT_CHOICE
 	CHOICE /C YN /D N /T 15 /M "Do you want to install the mini scripts? This scripts are not maintaned, may have bugs and can get you banned."
@@ -84,11 +84,11 @@ IF %ERRORLEVEL% EQU 2 GOTO :NEXT_CHOICE
 	IF %ERRORLEVEL% EQU 2 GOTO :EOF
 	
 :INSTALL_MINI_SCRIPTS
-	ECHO Installing MiniWaspBots...
-	CURL -L https://github.com/Torwent/MiniWaspBots/archive/refs/heads/master.zip > mwb.zip
+	ECHO Installing Wasp Mini Scripts...
+	CURL -L https://github.com/Torwent/wasp-mini/archive/refs/heads/master.zip > mwb.zip
 	TAR -xf mwb.zip
 	DEL mwb.zip
-	MOVE MiniWaspBots-master Simba\Scripts\MiniWaspBots
-	ECHO [Torwent/MiniWaspBots]>>Simba\Data\packages\packages.ini
-	ECHO Name=MiniWaspBots>>Simba\Data\packages\packages.ini
+	MOVE wasp-mini-master Simba\Scripts\wasp-mini
+	ECHO [Torwent/wasp-mini]>>Simba\Data\packages\packages.ini
+	ECHO Name=wasp-mini>>Simba\Data\packages\packages.ini
 	
