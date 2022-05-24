@@ -1,3 +1,12 @@
+## [0.2.1](https://github.com/Torwent/wasp-setup/compare/v0.2.0...v0.2.1) (2022-05-24)
+
+
+### Bug Fixes
+
+* fixed a lot of issues with this ([7c20c91](https://github.com/Torwent/wasp-setup/commit/7c20c912724ca776d11168b0da55562f784557f5))
+
+
+
 # [0.2.0](https://github.com/Torwent/wasp-setup/compare/v0.1.6...v0.2.0) (2022-03-15)
 
 
@@ -22,7 +31,6 @@
 ### Bug Fixes
 
 * latest release is actually not needed, oops ([6831f6d](https://github.com/Torwent/wasp-setup/commit/6831f6d6c02d629137802ba054be39c6f193b7d0))
-* rename windows-installer.cmd to windows-setup.cmd ([8e8843e](https://github.com/Torwent/wasp-setup/commit/8e8843ecc9ab24f0dbf6d332924cf83e373ec11e))
 * renamed files to setup ([a61286b](https://github.com/Torwent/wasp-setup/commit/a61286b0810aa40b4d7ebf1be30f98faeab2f047))
 
 
