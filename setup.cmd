@@ -1,104 +1,189 @@
-@ECHO OFF
+@echo OFF
 
-@ECHO OFF & CLS & ECHO.
-NET FILE 1>NUL 2>NUL & IF ERRORLEVEL 1 (
-	ECHO You must right-click and select
- 	ECHO "RUN AS ADMINISTRATOR"  to run this batch. Exiting...
-  	TIMEOUT 5
-	EXIT
-)
+:: THIS FIRST LINES IS TO AUTO ELEVATE TO ADMIN
 
-SET path=C:\Simba
+:: BatchGotAdmin
+:-------------------------------------
+::  --> Check for permissions
+>nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
 
-:CHECK_DIR
+:: --> If error flag set, we do not have admin.
+if '%errorlevel%' NEQ '0' (
+    echo Requesting administrative privileges...
+    goto UACPrompt
+) else ( goto gotAdmin )
 
-IF exist %path% GOTO :DIR_EXISTS
-GOTO :MAKE_DIRECTORY_TREE
+:UACPrompt
+    echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"
+    set params = %*:"=""
+    echo UAC.ShellExecute "cmd.exe", "/c %~s0 %params%", "", "runas", 1 >> "%temp%\getadmin.vbs"
 
+    "%temp%\getadmin.vbs"
+    del "%temp%\getadmin.vbs"
+    exit /B
+
+:gotAdmin
+    pushd "%CD%"
+    CD /D "%~dp0"
+:--------------------------------------
+
+:: AUTO ELEVATION ENDS HERE.
+
+
+:: Print Logo
+
+:::
+::: $g,_                               w$	
+::: $$$$&w,      _, _   _ ,_    __,,g$$$$
+::: _&$$$$$$$&,  _"*$r ,$P" __,g$$$$$$$$_			__          __             _____           _       _   		
+:::  _'*&$&$$$$$,   _*_"_   ,$$$$$$&&P"_ 			\ \        / /            / ____|         (_)     | |     
+:::         _"&$&r  j$$$E  _$&&*  _      			 \ \  /\  / __ _ ___ _ __| (___   ___ _ __ _ _ __ | |_ ___ 
+:::             1$ $g'*"g& $&_           			  \ \/  \/ / _` / __| '_ \\___ \ / __| '__| | '_ \| __/ __|
+:::              ] _&$$$$' L             			   \  /\  | (_| \__ | |_) ____) | (__| |  | | |_) | |_\__ \
+:::         _,g&&&rg&,",gg &$$&w,        			    \/  \/ \__,_|___| .__|_____/ \___|_|  |_| .__/ \__|___/
+:::       ,$$$$$F__$$$$$$$ _"$$$$$g      					            | |                     | | 
+:::      g$$$$$F   "&$$$&"   _$$$$$&						    |_|                     |_| 
+:::    _$$$$$&F    _,g*,,      $$$$$$r   
+:::     _"*&*_      "$&$"      _"**"__   
+:::                   $      
+
+
+for /f "delims=: tokens=*" %%A in ('findstr /b ::: "%~f0"') do @echo(%%A
+
+echo.
+echo.
+echo.
+echo.
+
+:: Set %SimbaPath% and %DesktopPath% for easy access.
+set SimbaPath=%LocalAppData%\Simba
+set DesktopPath=%USERPROFILE%\Desktop
+
+:: Check if %SimbaPath% Exists and go to the respective label.
+if exist %SimbaPath% goto :DIR_EXISTS 
+goto :MAKE_DIRECTORY_TREE
+
+:: If %SimbaPath% exists we are going to delete it.
 :DIR_EXISTS
-	ECHO Directory exists
-	RMDIR /S /Q %path%
-GOTO :MAKE_DIRECTORY_TREE
-
+	echo An old Simba directory exists, it will be deleted.
+	rmdir /S /Q %SimbaPath%
+	
+:: MAKE_DIRECTORY_TREE label will run wether DIR_EXISTS ran before or not.
+:: Here we will build the directory tree.
+:: Simba usually creates this when you open it but we need this directories to exist to download files to them.
 :MAKE_DIRECTORY_TREE
-	MKDIR %path%
-	MKDIR %path%\Data
-	MKDIR %path%\Data\packages
-	MKDIR %path%\Includes
-	MKDIR %path%\Scripts
+	md %SimbaPath%
+	md %SimbaPath%\Data
+	md %SimbaPath%\Data\packages
+	md %SimbaPath%\Includes
+	md %SimbaPath%\Scripts
 
-ECHO Downloading Simba
-CURL -L https://github.com/ollydev/Simba/releases/latest/download/Simba-Win32.exe > %path%\Simba.exe
+:: Download Simba to %SimbaPath%.
+echo Downloading Simba
+curl -L https://github.com/Villavu/Simba/releases/download/simba1400-release/Simba-Win32.exe > %SimbaPath%\Simba.exe
 
-IF exist %USERPROFILE%\Desktop\Simba.lnk (
-	DEL %USERPROFILE%\Desktop\Simba.lnk
+:: Check the Desktop for existing shortcuts to older Simba installs and delete them.
+if exist %DesktopPath%\Simba (
+	del /Q %DesktopPath%\Simba
+)
+if exist %DesktopPath%\SimbaFiles (
+	rmdir /Q %DesktopPath%\SimbaFiles
 )
 
-SET SCRIPT="%TEMP%\%RANDOM%-%RANDOM%-%RANDOM%-%RANDOM%.vbs"
-ECHO Set oWS = WScript.CreateObject("WScript.Shell") >> %SCRIPT%
-ECHO sLinkFile = "%USERPROFILE%\Desktop\Simba.lnk" >> %SCRIPT%
-ECHO Set oLink = oWS.CreateShortcut(sLinkFile) >> %SCRIPT%
-ECHO oLink.TargetPath = "%path%\Simba.exe" >> %SCRIPT%
-ECHO oLink.Save >> %SCRIPT%
-CSCRIPT /nologo %SCRIPT%
-DEL %SCRIPT%
+:: Create Simba and SimbaFiles shortcuts on user's Desktop.
+mklink %DesktopPath%\Simba %SimbaPath%\Simba.exe
+mklink /d %DesktopPath%\SimbaFiles %SimbaPath%
 
-CHOICE /C YN /D Y /T 5 /M "Do you want to install the unofficial SRL?"
-IF %ERRORLEVEL% EQU 1 GOTO :UNOFFICIAL_SRL
-IF %ERRORLEVEL% EQU 2 GOTO :OFFICIAL_SRL
+:: Prompt the user which flavour of SRL he/she wants to install.
+:: The unnoficial is the default which will be selected after 5 seconds without input.
+echo.
+echo.
+echo.
+choice /C YN /D Y /T 5 /M "Do you want to install the unofficial SRL?"
+if %ERRORLEVEL% equ 1 goto :UNOFFICIAL_SRL
+if %ERRORLEVEL% equ 2 goto :OFFICIAL_SRL
 
+:: Set %SRLLink% and add the entry to packages.ini with unnoficial SRL.
 :UNOFFICIAL_SRL
-	ECHO Unoffical SRL is going to be installed.
-	SET SRL_LINK=https://github.com/Torwent/SRL/archive/refs/heads/master.zip
-	ECHO [Torwent/SRL]>>%path%\Data\packages\packages.ini
-GOTO :INSTALL_SRL
+	echo Unoffical SRL is going to be installed.
+	set SRLLink=https://github.com/Torwent/SRL/archive/refs/heads/master.zip
+	echo [Torwent/SRL]>>%SimbaPath%\Data\packages\packages.ini
+goto :INSTALL_SRL
 
+:: Set %SRLLink% and add the entry to packages.ini with official SRL.
 :OFFICIAL_SRL
-	ECHO Official SRL is going to be installed.
-	SET SRL_LINK=https://github.com/ollydev/SRL-Development/archive/refs/heads/master.zip
-	ECHO [ollydev/SRL-Development]>>%path%\Data\packages\packages.ini
-GOTO :INSTALL_SRL
-
+	echo Official SRL is going to be installed.
+	set SRLLink=https://github.com/ollydev/SRL-Development/archive/refs/heads/master.zip
+	echo [ollydev/SRL-Development]>>%SimbaPath%\Data\packages\packages.ini
+	
+:: Wether we ran UNOFFICIAL_SRL or OFFICIAL_SRL we run INSTALL_SRL next.
+:: This will finish writting the SRL entry to the packages.ini file,
+:: download %SRLLink%, unzip it and move the contents to the includes directory.
 :INSTALL_SRL
-	ECHO Installing SRL...
-	ECHO Name=SRL>>%path%\Data\packages\packages.ini
-	CURL -L %SRL_LINK% > srl.zip
-	TAR -xf srl.zip
-	DEL srl.zip
-	MOVE SRL* %path%\Includes\SRL
-	
+	echo Installing SRL...
+	echo.
+	echo.
+	echo.
+	echo Name=SRL>>%SimbaPath%\Data\packages\packages.ini
+	curl -L %SRLLink% > srl.zip
+	tar -xf srl.zip
+	del srl.zip
+	move SRL* %SimbaPath%\Includes\SRL
+
+:: This will "install" WaspLib by writting the entry to the packages.ini file,
+:: download it, unzip it and move the contents to the includes directory.	
 :INSTALL_WL
-	ECHO Installing WaspLib...
-	CURL -L https://github.com/Torwent/WaspLib/archive/refs/heads/master.zip > wl.zip
-	TAR -xf wl.zip
-	DEL wl.zip
-	MOVE WaspLib-master %path%\Includes\WaspLib
-	ECHO [Torwent/WaspLib]>>%path%\Data\packages\packages.ini
-	ECHO Name=WaspLib>>%path%\Data\packages\packages.ini
+	echo Installing WaspLib...
+	echo.
+	echo.
+	echo.
+	curl -L https://github.com/Torwent/WaspLib/archive/refs/heads/master.zip > wl.zip
+	tar -xf wl.zip
+	del wl.zip
+	move WaspLib-master %SimbaPath%\Includes\WaspLib
+	echo [Torwent/WaspLib]>>%SimbaPath%\Data\packages\packages.ini
+	echo Name=WaspLib>>%SimbaPath%\Data\packages\packages.ini
 
-CHOICE /C YN /D Y /T 5 /M "Do you want to install the free scripts?"
-IF %ERRORLEVEL% EQU 1 GOTO :INSTALL_FREE_SCRIPTS
-IF %ERRORLEVEL% EQU 2 GOTO :NEXT_CHOICE
+:: At this point we are done but we prompt the user for optionally install wasp-free.
+:: The default is to install them if there was no input in 5 seconds.
+choice /C YN /D Y /T 5 /M "Do you want to install the free scripts?"
+if %ERRORLEVEL% equ 1 goto :INSTALL_FREE_SCRIPTS
+if %ERRORLEVEL% equ 2 goto :NEXT_CHOICE
 
+:: We run this if the user chose to install wasp-free.
+:: This does the same as the previous installs, make the entry in packages.ini,
+:: download it, unzip it and move the contents to the Scripts directory.	
 :INSTALL_FREE_SCRIPTS
-	ECHO Installing Wasp Free Scripts...
-	CURL -L https://github.com/Torwent/wasp-free/archive/refs/heads/master.zip > fwb.zip
-	TAR -xf fwb.zip
-	DEL fwb.zip
-	MOVE wasp-free-master %path%\Scripts\wasp-free
-	ECHO [Torwent/wasp-free]>>%path%\Data\packages\packages.ini
-	ECHO Name=wasp-free>>%path%\Data\packages\packages.ini
+	echo Installing Wasp Free Scripts...
+	echo.
+	echo.
+	echo.
+	curl -L https://github.com/Torwent/wasp-free/archive/refs/heads/master.zip > fwb.zip
+	tar -xf fwb.zip
+	del fwb.zip
+	move wasp-free-master %SimbaPath%\Scripts\wasp-free
+	echo [Torwent/wasp-free]>>%SimbaPath%\Data\packages\packages.ini
+	echo Name=wasp-free>>%SimbaPath%\Data\packages\packages.ini
+	md %SimbaPath%\Scripts\wasp-premium
 	
+:: Regardless of we running INSTALL_FREE_SCRIPTS or not, this runs next.
+:: It will prompt the user if he/she wants to install wasp-mini as well. By default it will not and the script ends.
 :NEXT_CHOICE
-	CHOICE /C YN /D N /T 15 /M "Do you want to install the mini scripts? This scripts are not maintaned, may have bugs and can get you banned."
-	IF %ERRORLEVEL% EQU 1 GOTO :INSTALL_MINI_SCRIPTS
-	IF %ERRORLEVEL% EQU 2 GOTO :EOF
-	
+	choice /C YN /D N /T 5 /M "Do you want to install the mini scripts? This scripts are not maintaned, may have bugs and can get you banned."
+	if %ERRORLEVEL% equ 1 goto :INSTALL_MINI_SCRIPTS
+	if %ERRORLEVEL% equ 2 goto :EOF
+
+:: If the user chose to install wasp-mini we run this.
+:: This does the same as the previous installs, make the entry in packages.ini,
+:: download it, unzip it and move the contents to the Scripts directory.		
 :INSTALL_MINI_SCRIPTS
-	ECHO Installing Wasp Mini Scripts...
-	CURL -L https://github.com/Torwent/wasp-mini/archive/refs/heads/master.zip > mwb.zip
-	TAR -xf mwb.zip
-	DEL mwb.zip
-	MOVE wasp-mini-master %path%\Scripts\wasp-mini
-	ECHO [Torwent/wasp-mini]>>%path%\Data\packages\packages.ini
-	ECHO Name=wasp-mini>>%path%\Data\packages\packages.ini
+	echo Installing Wasp Mini Scripts...
+	echo.
+	echo.
+	echo.
+	curl -L https://github.com/Torwent/wasp-mini/archive/refs/heads/master.zip > mwb.zip
+	tar -xf mwb.zip
+	del mwb.zip
+	move wasp-mini-master %SimbaPath%\Scripts\wasp-mini
+	echo [Torwent/wasp-mini]>>%SimbaPath%\Data\packages\packages.ini
+	echo Name=wasp-mini>>%SimbaPath%\Data\packages\packages.ini
