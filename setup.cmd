@@ -113,7 +113,7 @@ goto :INSTALL_SRL
 :: Set %SRLLink% and add the entry to packages.ini with official SRL.
 :OFFICIAL_SRL
 	echo Official SRL is going to be installed.
-	set SRLLink=https://github.com/ollydev/SRL-Development/archive/refs/heads/master.zip
+	set SRLLink=https://github.com/Villavu/SRL-Development/archive/refs/heads/master.zip
 	echo [ollydev/SRL-Development]>>%SimbaPath%\Data\packages\packages.ini
 	
 :: Wether we ran UNOFFICIAL_SRL or OFFICIAL_SRL we run INSTALL_SRL next.
