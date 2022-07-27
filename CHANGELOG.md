@@ -1,3 +1,12 @@
+## [0.2.2](https://github.com/Torwent/wasp-setup/compare/v0.2.1...v0.2.2) (2022-07-27)
+
+
+### Bug Fixes
+
+* fix the admin issues ([3f4ee97](https://github.com/Torwent/wasp-setup/commit/3f4ee9730e947b3d27543a1f2a728be8202f9e83))
+
+
+
 ## [0.2.1](https://github.com/Torwent/wasp-setup/compare/v0.2.0...v0.2.1) (2022-05-24)
 
 
@@ -30,7 +39,6 @@
 
 ### Bug Fixes
 
-* latest release is actually not needed, oops ([6831f6d](https://github.com/Torwent/wasp-setup/commit/6831f6d6c02d629137802ba054be39c6f193b7d0))
 * renamed files to setup ([a61286b](https://github.com/Torwent/wasp-setup/commit/a61286b0810aa40b4d7ebf1be30f98faeab2f047))
 
 
