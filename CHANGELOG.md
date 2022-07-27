@@ -1,3 +1,12 @@
+## [0.2.3](https://github.com/Torwent/wasp-setup/compare/v0.2.2...v0.2.3) (2022-07-27)
+
+
+### Bug Fixes
+
+* fixed a typo, forgot to change the repo owner from Olly to Villavu ([656c5ff](https://github.com/Torwent/wasp-setup/commit/656c5ffe01424462bc893effebbcead920a533f5))
+
+
+
 ## [0.2.2](https://github.com/Torwent/wasp-setup/compare/v0.2.1...v0.2.2) (2022-07-27)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * add .commit file ([cca2ed0](https://github.com/Torwent/wasp-setup/commit/cca2ed07082645e35a60ed239785f01a9c8691f3))
-
-
-
-## [0.1.5](https://github.com/Torwent/wasp-setup/compare/v0.1.4...v0.1.5) (2022-03-10)
-
-
-### Bug Fixes
-
-* renamed files to setup ([a61286b](https://github.com/Torwent/wasp-setup/commit/a61286b0810aa40b4d7ebf1be30f98faeab2f047))
 
 
 
