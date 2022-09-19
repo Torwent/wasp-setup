@@ -1,9 +1,10 @@
-## [0.2.3](https://github.com/Torwent/wasp-setup/compare/v0.2.2...v0.2.3) (2022-07-27)
+## [0.2.4](https://github.com/Torwent/wasp-setup/compare/v0.2.3...v0.2.4) (2022-09-19)
 
 
 ### Bug Fixes
 
 * fixed a typo, forgot to change the repo owner from Olly to Villavu ([656c5ff](https://github.com/Torwent/wasp-setup/commit/656c5ffe01424462bc893effebbcead920a533f5))
+* fixed ASCII art ([f5446b1](https://github.com/Torwent/wasp-setup/commit/f5446b1e416feb9c9168f8ac986f7286d9f1f1bc))
 
 
 
@@ -31,15 +32,6 @@
 ### Features
 
 * now checks for Simba directory exists. ([340ac08](https://github.com/Torwent/wasp-setup/commit/340ac08607d68381d252ee4f73795e94fce1a9e0))
-
-
-
-## [0.1.6](https://github.com/Torwent/wasp-setup/compare/v0.1.5...v0.1.6) (2022-03-10)
-
-
-### Bug Fixes
-
-* add .commit file ([cca2ed0](https://github.com/Torwent/wasp-setup/commit/cca2ed07082645e35a60ed239785f01a9c8691f3))
 
 
 
