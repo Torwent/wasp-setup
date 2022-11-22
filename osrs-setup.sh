@@ -15,7 +15,7 @@ rm -rf ~/osrs/tmp
 
 echo 'alias osrs="java -Djava.class.path=$HOME/osrs/osrs.jar -Dsun.java2d.noddraw=true -Dcom.jagex.config=http://oldschool.runescape.com/jav_config.ws -Duser.home=$HOME/osrs -Dhttps.protocols=TLSv1.2 -Xss2m -Xmx512m -Xms512m -XX:+DisableExplicitGC -XX:+AggressiveOpts -XX:+UseAdaptiveGCBoundary -XX:MaxGCPauseMillis=500 -XX:SurvivorRatio=16 -XX:+UseParallelGC -XX:+UnlockExperimentalVMOptions -XX:+TieredCompilation osrs $HOME/osrs/"' | sudo tee --append /etc/bash.bashrc
 
-if [ ! -f /usr/share/applications/osrs.desktop ] then
+if [ ! -f /usr/share/applications/osrs.desktop ]; then
 	echo '[Desktop Entry]' | sudo tee --append /usr/share/applications/osrs.desktop
 	echo 'Type=Application' | sudo tee --append /usr/share/applications/osrs.desktop
 	echo 'Exec="java -Djava.class.path=$HOME/osrs/osrs.jar -Dsun.java2d.noddraw=true -Dcom.jagex.config=http://oldschool.runescape.com/jav_config.ws -Duser.home=$HOME/osrs -Dhttps.protocols=TLSv1.2 -Xss2m -Xmx512m -Xms512m -XX:+DisableExplicitGC -XX:+AggressiveOpts -XX:+UseAdaptiveGCBoundary -XX:MaxGCPauseMillis=500 -XX:SurvivorRatio=16 -XX:+UseParallelGC -XX:+UnlockExperimentalVMOptions -XX:+TieredCompilation osrs $HOME/osrs/"' | sudo tee --append /usr/share/applications/osrs.desktop
