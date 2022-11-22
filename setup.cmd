@@ -29,7 +29,6 @@ if '%errorlevel%' NEQ '0' (
 
 :: AUTO ELEVATION ENDS HERE.
 
-
 :: Print Logo
 
 :::
@@ -41,7 +40,7 @@ if '%errorlevel%' NEQ '0' (
 :::             1$ $g'*"g& $&_           			  \ \/  \/ / _` / __| '_ \\___ \ / __| '__| | '_ \| __/ __|
 :::              ] _&$$$$' L             			   \  /\  | (_| \__ | |_) ____) | (__| |  | | |_) | |_\__ \
 :::         _,g&&&rg&,",gg &$$&w,        			    \/  \/ \__,_|___| .__|_____/ \___|_|  |_| .__/ \__|___/
-:::       ,$$$$$F__$$$$$$$ _"$$$$$g					    | |                     | | 
+:::       ,$$$$$F__$$$$$$$ _"$$$$$g      					    | |                     | | 
 :::      g$$$$$F   "&$$$&"   _$$$$$&					    |_|                     |_| 
 :::    _$$$$$&F    _,g*,,      $$$$$$r   
 :::     _"*&*_      "$&$"      _"**"__   
@@ -52,10 +51,6 @@ for /f "delims=: tokens=*" %%A in ('findstr /b ::: "%~f0"') do @echo(%%A
 
 echo.
 echo.
-echo.
-echo.
-
-PAUSE
 
 :: Set %SimbaPath% and %DesktopPath% for easy access.
 set SimbaPath=%LocalAppData%\Simba
@@ -101,50 +96,53 @@ mklink /d %DesktopPath%\SimbaFiles %SimbaPath%
 echo.
 echo.
 echo.
-choice /C YN /D Y /T 5 /M "Do you want to install the unofficial SRL?"
-if %ERRORLEVEL% equ 1 goto :UNOFFICIAL_SRL
-if %ERRORLEVEL% equ 2 goto :OFFICIAL_SRL
 
-:: Set %SRLLink% and add the entry to packages.ini with unnoficial SRL.
-:UNOFFICIAL_SRL
-	echo Unoffical SRL is going to be installed.
-	set SRLLink=https://github.com/Torwent/SRL/archive/refs/heads/master.zip
-	echo [Torwent/SRL]>>%SimbaPath%\Data\packages\packages.ini
-goto :INSTALL_SRL
+:: Install official SRL.
+echo Installing official SRL.
+echo.
+echo.
+echo [Villavu/SRL-Development]>>%SimbaPath%\Data\packages\packages.ini
+echo Name=SRL>>%SimbaPath%\Data\packages\packages.ini
+curl -L https://github.com/Villavu/SRL-Development/archive/refs/heads/master.zip > srl.zip
+tar -xf srl.zip
+del srl.zip
+move SRL* %SimbaPath%\Includes\SRL
 
-:: Set %SRLLink% and add the entry to packages.ini with official SRL.
-:OFFICIAL_SRL
-	echo Official SRL is going to be installed.
-	set SRLLink=https://github.com/Villavu/SRL-Development/archive/refs/heads/master.zip
-	echo [ollydev/SRL-Development]>>%SimbaPath%\Data\packages\packages.ini
-	
-:: Wether we ran UNOFFICIAL_SRL or OFFICIAL_SRL we run INSTALL_SRL next.
-:: This will finish writting the SRL entry to the packages.ini file,
-:: download %SRLLink%, unzip it and move the contents to the includes directory.
-:INSTALL_SRL
-	echo Installing SRL...
-	echo.
-	echo.
-	echo.
-	echo Name=SRL>>%SimbaPath%\Data\packages\packages.ini
-	curl -L %SRLLink% > srl.zip
-	tar -xf srl.zip
-	del srl.zip
-	move SRL* %SimbaPath%\Includes\SRL
+::Install SRL-T.	
+echo Installing SRL-T.
+echo.
+echo.
+echo [Torwent/SRL-T]>>%SimbaPath%\Data\packages\packages.ini
+echo Name=SRL-T>>%SimbaPath%\Data\packages\packages.ini
+curl -L https://github.com/Torwent/SRL/archive/refs/heads/master.zip > srl.zip
+tar -xf srl.zip
+del srl.zip
+move SRL* %SimbaPath%\Includes\SRL-T
+
+::Install SRL-F.	
+echo Installing SRL-F.
+echo.
+echo.
+echo [J-Flight/SRL-F]>>%SimbaPath%\Data\packages\packages.ini
+echo Name=SRL-F>>%SimbaPath%\Data\packages\packages.ini
+curl -L https://github.com/J-Flight/SRL-F/archive/refs/heads/master.zip > srl.zip
+tar -xf srl.zip
+del srl.zip
+move SRL* %SimbaPath%\Includes\SRL-F
 
 :: This will "install" WaspLib by writting the entry to the packages.ini file,
 :: download it, unzip it and move the contents to the includes directory.	
-:INSTALL_WL
-	echo Installing WaspLib...
-	echo.
-	echo.
-	echo.
-	curl -L https://github.com/Torwent/WaspLib/archive/refs/heads/master.zip > wl.zip
-	tar -xf wl.zip
-	del wl.zip
-	move WaspLib-master %SimbaPath%\Includes\WaspLib
-	echo [Torwent/WaspLib]>>%SimbaPath%\Data\packages\packages.ini
-	echo Name=WaspLib>>%SimbaPath%\Data\packages\packages.ini
+
+echo Installing WaspLib...
+echo.
+echo.
+echo.
+curl -L https://github.com/Torwent/WaspLib/archive/refs/heads/master.zip > wl.zip
+tar -xf wl.zip
+del wl.zip
+move WaspLib-master %SimbaPath%\Includes\WaspLib
+echo [Torwent/WaspLib]>>%SimbaPath%\Data\packages\packages.ini
+echo Name=WaspLib>>%SimbaPath%\Data\packages\packages.ini
 
 :: At this point we are done but we prompt the user for optionally install wasp-free.
 :: The default is to install them if there was no input in 5 seconds.
@@ -183,9 +181,9 @@ if %ERRORLEVEL% equ 2 goto :NEXT_CHOICE
 	echo.
 	echo.
 	echo.
-	curl -L https://github.com/Torwent/wasp-mini/archive/refs/heads/master.zip > mwb.zip
-	tar -xf mwb.zip
-	del mwb.zip
+	curl -L https://github.com/Torwent/wasp-mini/archive/refs/heads/master.zip > wm.zip
+	tar -xf wm.zip
+	del wm.zip
 	move wasp-mini-master %SimbaPath%\Scripts\wasp-mini
 	echo [Torwent/wasp-mini]>>%SimbaPath%\Data\packages\packages.ini
 	echo Name=wasp-mini>>%SimbaPath%\Data\packages\packages.ini
