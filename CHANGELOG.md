@@ -1,3 +1,12 @@
+## [0.2.5](https://github.com/Torwent/wasp-setup/compare/v0.2.4...v0.2.5) (2022-11-22)
+
+
+### Bug Fixes
+
+* wasp-setup now installs all 3 popular flavours of SRL ([339332b](https://github.com/Torwent/wasp-setup/commit/339332bad722b2f4816a91cad753856130220df3))
+
+
+
 ## [0.2.4](https://github.com/Torwent/wasp-setup/compare/v0.2.3...v0.2.4) (2022-09-19)
 
 
@@ -23,15 +32,6 @@
 ### Bug Fixes
 
 * fixed a lot of issues with this ([7c20c91](https://github.com/Torwent/wasp-setup/commit/7c20c912724ca776d11168b0da55562f784557f5))
-
-
-
-# [0.2.0](https://github.com/Torwent/wasp-setup/compare/v0.1.6...v0.2.0) (2022-03-15)
-
-
-### Features
-
-* now checks for Simba directory exists. ([340ac08](https://github.com/Torwent/wasp-setup/commit/340ac08607d68381d252ee4f73795e94fce1a9e0))
 
 
 
