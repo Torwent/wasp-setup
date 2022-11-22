@@ -1,3 +1,12 @@
+## [0.3.1](https://github.com/Torwent/wasp-setup/compare/v0.3.0...v0.3.1) (2022-11-22)
+
+
+### Bug Fixes
+
+* typo in osrs-setup.sh ([d8c5ec2](https://github.com/Torwent/wasp-setup/commit/d8c5ec2d5657f5e65659c9148835cbd74ed7f884))
+
+
+
 # [0.3.0](https://github.com/Torwent/wasp-setup/compare/v0.2.5...v0.3.0) (2022-11-22)
 
 
@@ -23,15 +32,6 @@
 
 * fixed a typo, forgot to change the repo owner from Olly to Villavu ([656c5ff](https://github.com/Torwent/wasp-setup/commit/656c5ffe01424462bc893effebbcead920a533f5))
 * fixed ASCII art ([f5446b1](https://github.com/Torwent/wasp-setup/commit/f5446b1e416feb9c9168f8ac986f7286d9f1f1bc))
-
-
-
-## [0.2.2](https://github.com/Torwent/wasp-setup/compare/v0.2.1...v0.2.2) (2022-07-27)
-
-
-### Bug Fixes
-
-* fix the admin issues ([3f4ee97](https://github.com/Torwent/wasp-setup/commit/3f4ee9730e947b3d27543a1f2a728be8202f9e83))
 
 
 
