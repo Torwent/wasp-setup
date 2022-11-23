@@ -1,3 +1,12 @@
+## [0.3.3](https://github.com/Torwent/wasp-setup/compare/v0.3.2...v0.3.3) (2022-11-23)
+
+
+### Bug Fixes
+
+* fixed some issues with the linux shell scripts ([1f80cce](https://github.com/Torwent/wasp-setup/commit/1f80cce80d0a555fe7d73df3591aa2f6ca7e6b7a))
+
+
+
 ## [0.3.2](https://github.com/Torwent/wasp-setup/compare/v0.3.1...v0.3.2) (2022-11-22)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * wasp-setup now installs all 3 popular flavours of SRL ([339332b](https://github.com/Torwent/wasp-setup/commit/339332bad722b2f4816a91cad753856130220df3))
-
-
-
-## [0.2.4](https://github.com/Torwent/wasp-setup/compare/v0.2.3...v0.2.4) (2022-09-19)
-
-
-### Bug Fixes
-
-* fixed ASCII art ([f5446b1](https://github.com/Torwent/wasp-setup/commit/f5446b1e416feb9c9168f8ac986f7286d9f1f1bc))
 
 
 
