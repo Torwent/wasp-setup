@@ -1,3 +1,12 @@
+# [0.4.0](https://github.com/Torwent/wasp-setup/compare/v0.3.6...v0.4.0) (2022-11-23)
+
+
+### Features
+
+* added the WaspScripts ASCII art ([9381bb6](https://github.com/Torwent/wasp-setup/commit/9381bb66ad509807092097db0f656e66d41429e0))
+
+
+
 ## [0.3.6](https://github.com/Torwent/wasp-setup/compare/v0.3.5...v0.3.6) (2022-11-23)
 
 
@@ -15,15 +24,6 @@
 ### Bug Fixes
 
 * fixed some issues with the linux shell scripts ([1f80cce](https://github.com/Torwent/wasp-setup/commit/1f80cce80d0a555fe7d73df3591aa2f6ca7e6b7a))
-
-
-
-## [0.3.2](https://github.com/Torwent/wasp-setup/compare/v0.3.1...v0.3.2) (2022-11-22)
-
-
-### Bug Fixes
-
-* minor fixes to osrs-setup.sh ([bf3ee75](https://github.com/Torwent/wasp-setup/commit/bf3ee750454fb2b9496e8f0085bd5136e318c67b))
 
 
 
