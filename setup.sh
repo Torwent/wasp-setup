@@ -24,9 +24,9 @@ wget -O ~/Simba/Simba https://github.com/Villavu/Simba/releases/download/simba14
 chmod +x ~/Simba/Simba
 sudo setcap cap_sys_ptrace=eip ~/Simba/Simba
 
-
-if [ "$(type -t simba)" = '' ]; then
-    echo 'alias simba="$HOME/Simba/Simba"' | sudo tee --append /etc/bash.bashrc
+if ! grep -Fxq "alias simba" ~/.bashrc; then
+    echo 'alias simba="$HOME/Simba/Simba"' | sudo tee --append ~/.bashrc
+	source ~/.bashrc
 fi
 
 if [ ! -f /usr/share/applications/simba.desktop ] then
