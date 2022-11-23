@@ -8,7 +8,7 @@ cd ~/osrs/tmp
 
 wget -O OldSchool.msi http://www.runescape.com/downloads/OldSchool.msi
 msiextract OldSchool.msi
-sudo cp ~/osrs/tmp/jagexlauncher/jagexlauncher/bin/jagexappletviewer.jar ~/osrs/jagexlauncher.jar
+sudo cp ~/osrs/tmp/jagexlauncher/jagexlauncher/bin/jagexappletviewer.jar ~/osrs/osrs.jar
 sudo cp ~/osrs/tmp/jagexlauncher/jagexlauncher/oldschool/jagexappletviewer.png ~/osrs/osrs.png
 sudo chmod 755 ~/osrs/osrs.jar
 rm -rf ~/osrs/tmp
