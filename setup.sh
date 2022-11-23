@@ -16,7 +16,7 @@ case `dpkg --print-architecture` in
   *)
 	echo "There's no binary for your architecture. You need to manually compile Simba.";
 	Exit 1;;
-exac
+esac
 
 echo "Installing Simba-${arch}"  
 wget -O ~/Simba/Simba https://github.com/Villavu/Simba/releases/download/simba1400-release/Simba-${arch}
