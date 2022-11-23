@@ -29,7 +29,7 @@ if ! grep -Fxq "alias simba" ~/.bashrc; then
 	source ~/.bashrc
 fi
 
-if [ ! -f /usr/share/applications/simba.desktop ] then
+if [ ! -f /usr/share/applications/simba.desktop ]; then
 	echo '[Desktop Entry]' | sudo tee --append /usr/share/applications/simba.desktop
 	echo 'Type=Application' | sudo tee --append /usr/share/applications/simba.desktop
 	echo 'Name=Simba' | sudo tee --append /usr/share/applications/simba.desktop
