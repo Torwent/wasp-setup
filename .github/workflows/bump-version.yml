@@ -47,6 +47,5 @@ jobs:
         title: ${{ steps.changelog.outputs.tag }}
         files: |
           LICENSE
-          *.cmd
-          *.sh
-          *.command
+          */*.cmd
+          */*.sh
