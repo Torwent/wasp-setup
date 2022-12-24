@@ -19,11 +19,11 @@ EOF
 
 sudo apt-get install curl tar libxtst-dev gtk2.0 libgtk2.0-dev libffi-dev libcap2-bin -y
 mkdir ~/Simba
-mkdir ~Simba/Data
-mkdir ~Simba/Data
-mkdir ~Simba/Data/packages
-mkdir ~Simba/Includes
-mkdir ~Simba/Scripts
+mkdir ~/Simba/Data
+mkdir ~/Simba/Data
+mkdir ~/Simba/Data/packages
+mkdir ~/Simba/Includes
+mkdir ~/Simba/Scripts
 
 wget -O ~/Simba/Simba.ico https://raw.githubusercontent.com/Villavu/Simba/simba1400/Source/Simba/Simba.ico
 
