@@ -17,8 +17,13 @@ cat << "EOF"
                    $   						                   |_|			   
 EOF
 
-sudo apt install libxtst-dev gtk2.0 libgtk2.0-dev libffi-dev libcap2-bin -y
+sudo apt-get install curl tar libxtst-dev gtk2.0 libgtk2.0-dev libffi-dev libcap2-bin -y
 mkdir ~/Simba
+mkdir ~Simba/Data
+mkdir ~Simba/Data
+mkdir ~Simba/Data/packages
+mkdir ~Simba/Includes
+mkdir ~Simba/Scripts
 
 wget -O ~/Simba/Simba.ico https://raw.githubusercontent.com/Villavu/Simba/simba1400/Source/Simba/Simba.ico
 
@@ -59,3 +64,56 @@ if [ ! -f /usr/share/applications/simba.desktop ]; then
 	echo 'Terminal=false' | sudo tee --append /usr/share/applications/simba.desktop
 	echo 'Keywords=Simba;RuneScape;OSRS;' | sudo tee --append /usr/share/applications/simba.desktop
 fi
+
+echo Installing official SRL.
+echo
+echo
+echo [Villavu/SRL-Development]>>~/Simba/Data/packages/packages.ini
+echo Name=SRL>>~/Simba/Data/packages/packages.ini
+curl -L https://github.com/Villavu/SRL-Development/archive/refs/heads/master.zip > srl.zip
+unzip srl.zip
+rm srl.zip
+mv SRL* ~/Simba/Includes/SRL
+
+echo Installing SRL-T.
+echo
+echo
+echo [Torwent/SRL-T]>>~/Simba/Data/packages/packages.ini
+echo Name=SRL-T>>>~/Simba/Data/packages/packages.ini
+curl -L https://github.com/Torwent/SRL/archive/refs/heads/master.zip > srl.zip
+unzip srl.zip
+rm srl.zip
+mv SRL* ~/Simba/Includes/SRL-T
+
+echo Installing SRL-F.
+echo
+echo
+echo [J-Flight/SRL-F]]>>~/Simba/Data/packages/packages.ini
+echo Name=SRL-F>>~/Simba/Data/packages/packages.ini
+curl -L https://github.com/J-Flight/SRL-F/archive/refs/heads/master.zip > srl.zip
+unzip srl.zip
+rm srl.zip
+mv SRL* ~/Simba/Includes/SRL-F
+
+
+echo Installing WaspLib...
+echo
+echo
+echo [Torwent/WaspLib]>>~/Simba/Data/packages/packages.ini
+echo Name=WaspLib>>~/Simba/Data/packages/packages.ini
+curl -L https://github.com/Torwent/WaspLib/archive/refs/heads/master.zip > wl.zip
+unzip wl.zip
+rm wl.zip
+mv WaspLib-master ~/Simba/Includes/WaspLib
+
+
+echo Installing Wasp Free Scripts...
+echo
+echo
+echo [Torwent/wasp-free]>>~/Simba/Data/packages/packages.ini
+echo Name=wasp-free>>~/Simba/Data/packages/packages.ini
+curl -L https://github.com/Torwent/wasp-free/archive/refs/heads/master.zip > wf.zip
+unzip wf.zip
+rm wf.zip
+mv wasp-free-master ~/Simba/Scripts/wasp-free
+mkdir ~/Simba/Scripts/wasp-premium
