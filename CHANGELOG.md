@@ -1,3 +1,12 @@
+## [0.5.2](https://github.com/Torwent/wasp-setup/compare/v0.5.1...v0.5.2) (2022-12-24)
+
+
+### Bug Fixes
+
+* **linux:** added simba packages which were missing ([eff414f](https://github.com/Torwent/wasp-setup/commit/eff414f8502edfa2c70f6d674a5490d817f7dd37))
+
+
+
 ## [0.5.1](https://github.com/Torwent/wasp-setup/compare/v0.5.0...v0.5.1) (2022-11-23)
 
 
@@ -26,7 +35,6 @@
 
 ### Bug Fixes
 
-* another typo in the setup.sh ([35a6daa](https://github.com/Torwent/wasp-setup/commit/35a6daa12da2d439f90eab33efb3f8bb7f586b93))
 * typo in osrs-setup.sh ([30b871c](https://github.com/Torwent/wasp-setup/commit/30b871cf32b8318dd6927538a82c460d1bb657b2))
 
 
