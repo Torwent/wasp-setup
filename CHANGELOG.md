@@ -1,3 +1,12 @@
+# [0.6.0](https://github.com/Torwent/wasp-setup/compare/v0.5.3...v0.6.0) (2023-01-01)
+
+
+### Features
+
+* added discord update notifications ([1da49b8](https://github.com/Torwent/wasp-setup/commit/1da49b8be351527c7f1ae72016df4037d014a5b6))
+
+
+
 ## [0.5.3](https://github.com/Torwent/wasp-setup/compare/v0.5.2...v0.5.3) (2022-12-24)
 
 
@@ -19,15 +28,6 @@
 ### Features
 
 * moved scripts to subdirectories ([c2a0c97](https://github.com/Torwent/wasp-setup/commit/c2a0c978aa4830a0e8d66a76a04907962929ccde))
-
-
-
-# [0.4.0](https://github.com/Torwent/wasp-setup/compare/v0.3.6...v0.4.0) (2022-11-23)
-
-
-### Features
-
-* added the WaspScripts ASCII art ([9381bb6](https://github.com/Torwent/wasp-setup/commit/9381bb66ad509807092097db0f656e66d41429e0))
 
 
 
