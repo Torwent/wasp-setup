@@ -1,3 +1,12 @@
+## [0.6.1](https://github.com/Torwent/wasp-setup/compare/v0.6.0...v0.6.1) (2023-01-03)
+
+
+### Bug Fixes
+
+* added link to commit in discord notification ([cc3357e](https://github.com/Torwent/wasp-setup/commit/cc3357ef92c86e329ee6e3eaa229359f11a74b1a))
+
+
+
 # [0.6.0](https://github.com/Torwent/wasp-setup/compare/v0.5.3...v0.6.0) (2023-01-01)
 
 
@@ -23,11 +32,6 @@
 ### Bug Fixes
 
 * auto-release ([892522a](https://github.com/Torwent/wasp-setup/commit/892522ac45e60be93fdc013deef933ccc34d8ea4))
-
-
-### Features
-
-* moved scripts to subdirectories ([c2a0c97](https://github.com/Torwent/wasp-setup/commit/c2a0c978aa4830a0e8d66a76a04907962929ccde))
 
 
 
