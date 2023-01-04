@@ -79,7 +79,7 @@ echo Installing SRL-T.
 echo
 echo
 echo [Torwent/SRL-T]>>~/Simba/Data/packages/packages.ini
-echo Name=SRL-T>>>~/Simba/Data/packages/packages.ini
+echo Name=SRL-T>>~/Simba/Data/packages/packages.ini
 curl -L https://github.com/Torwent/SRL/archive/refs/heads/master.zip > srl.zip
 unzip srl.zip
 rm srl.zip
