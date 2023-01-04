@@ -1,3 +1,12 @@
+## [0.6.2](https://github.com/Torwent/wasp-setup/compare/v0.6.1...v0.6.2) (2023-01-04)
+
+
+### Bug Fixes
+
+* typo in linux install script ([bf8f3b4](https://github.com/Torwent/wasp-setup/commit/bf8f3b461b2cffdff89eb313afa05749e3212c73))
+
+
+
 ## [0.6.1](https://github.com/Torwent/wasp-setup/compare/v0.6.0...v0.6.1) (2023-01-03)
 
 
@@ -23,15 +32,6 @@
 
 * **linux:** added simba packages which were missing ([eff414f](https://github.com/Torwent/wasp-setup/commit/eff414f8502edfa2c70f6d674a5490d817f7dd37))
 * **linux:** typos ([1a55887](https://github.com/Torwent/wasp-setup/commit/1a558878680b7da22e9b541a48a814ff25656ae2))
-
-
-
-## [0.5.1](https://github.com/Torwent/wasp-setup/compare/v0.5.0...v0.5.1) (2022-11-23)
-
-
-### Bug Fixes
-
-* auto-release ([892522a](https://github.com/Torwent/wasp-setup/commit/892522ac45e60be93fdc013deef933ccc34d8ea4))
 
 
 
