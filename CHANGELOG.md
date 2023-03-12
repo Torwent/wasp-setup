@@ -1,3 +1,12 @@
+## [0.7.1](https://github.com/Torwent/wasp-setup/compare/v0.7.0...v0.7.1) (2023-03-12)
+
+
+### Bug Fixes
+
+* force bump ([5533584](https://github.com/Torwent/wasp-setup/commit/5533584aa056c95564325f495030be0cf12b8ec2))
+
+
+
 # [0.7.0](https://github.com/Torwent/wasp-setup/compare/v0.6.2...v0.7.0) (2023-03-12)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * added discord update notifications ([1da49b8](https://github.com/Torwent/wasp-setup/commit/1da49b8be351527c7f1ae72016df4037d014a5b6))
-
-
-
-## [0.5.3](https://github.com/Torwent/wasp-setup/compare/v0.5.2...v0.5.3) (2022-12-24)
-
-
-### Bug Fixes
-
-* **linux:** typos ([1a55887](https://github.com/Torwent/wasp-setup/commit/1a558878680b7da22e9b541a48a814ff25656ae2))
 
 
 
