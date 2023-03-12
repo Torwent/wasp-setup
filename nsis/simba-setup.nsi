@@ -205,7 +205,6 @@ RmDir /r "$INSTDIR\Includes"
 RmDir /r "$INSTDIR\Fonts"
 RmDir /r "$INSTDIR\Scripts"
 
-
 Delete "$INSTDIR\uninstall.exe"
 !ifdef WEB_SITE
 Delete "$INSTDIR\${APP_NAME} website.url"
