@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.2.0
-                    
+
       - name: Generate changelog
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3.18.0
@@ -23,10 +23,10 @@ jobs:
           skip-version-file: "true"
           skip-on-empty: "true"
           skip-commit: "false"
-                         
+
       - name: Create release
         uses: "marvinpinto/action-automatic-releases@latest"
-        with:     
+        with:
           if: ${{ steps.changelog.outputs.skipped == 'false' }}
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: ${{ steps.changelog.outputs.tag }}
@@ -34,9 +34,10 @@ jobs:
           title: ${{ steps.changelog.outputs.tag }}
           files: |
             LICENSE
+            */*.exe
             */*.cmd
             */*.sh
-            
+
       - name: Discord notification
         uses: rguillaume/discord-action-embed@v1.0.4
         with:
