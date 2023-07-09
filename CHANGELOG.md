@@ -1,3 +1,12 @@
+## [0.7.2](https://github.com/Torwent/wasp-setup/compare/v0.7.1...v0.7.2) (2023-07-09)
+
+
+### Bug Fixes
+
+* should now add packages to the package manager properly ([3536f0f](https://github.com/Torwent/wasp-setup/commit/3536f0f16ed66a96ee6db6f4738d345077d7d5d8))
+
+
+
 ## [0.7.1](https://github.com/Torwent/wasp-setup/compare/v0.7.0...v0.7.1) (2023-03-12)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * added link to commit in discord notification ([cc3357e](https://github.com/Torwent/wasp-setup/commit/cc3357ef92c86e329ee6e3eaa229359f11a74b1a))
-
-
-
-# [0.6.0](https://github.com/Torwent/wasp-setup/compare/v0.5.3...v0.6.0) (2023-01-01)
-
-
-### Features
-
-* added discord update notifications ([1da49b8](https://github.com/Torwent/wasp-setup/commit/1da49b8be351527c7f1ae72016df4037d014a5b6))
 
 
 
