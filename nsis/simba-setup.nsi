@@ -81,28 +81,26 @@ InstallDir "$LOCALAPPDATA\Simba"
 Section -MainProgram
 ${INSTALL_TYPE}
 SetOverwrite on
-SetOutPath "$INSTDIR\Data"
-File ".\Simba\Data\default.simba"
-SetOutPath "$INSTDIR\Data\packages"
-File ".\Simba\Data\packages\Torwent-SRL-T"
-File ".\Simba\Data\packages\Torwent-wasp-free"
-File ".\Simba\Data\packages\Torwent-wasp-mini"
-File ".\Simba\Data\packages\Torwent-WaspLib"
 
 Delete "$INSTDIR\Simba.exe"
 Delete "$INSTDIR\Data\settings.ini"
 Delete "$INSTDIR\COPYING"
+
+Delete "$INSTDIR\uninstall.exe"
+!ifdef WEB_SITE
+Delete "$INSTDIR\${APP_NAME} website.url"
+!endif
 
 RmDir /r "$INSTDIR\Data\packages"
 RmDir /r "$INSTDIR\Includes"
 RmDir /r "$INSTDIR\Fonts"
 RmDir /r "$INSTDIR\Scripts"
 
+SetOutPath "$INSTDIR\Data"
+File ".\Simba\Data\default.simba"
+SetOutPath "$INSTDIR\Data\packages"
+File ".\Simba\Data\packages.ini"
 
-Delete "$INSTDIR\uninstall.exe"
-!ifdef WEB_SITE
-Delete "$INSTDIR\${APP_NAME} website.url"
-!endif
 
 CreateDirectory "$INSTDIR\Includes"
 CreateDirectory "$INSTDIR\Scripts"
