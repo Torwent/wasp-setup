@@ -84,6 +84,7 @@ SetOverwrite on
 
 Delete "$INSTDIR\Simba.exe"
 Delete "$INSTDIR\Data\settings.ini"
+Delete "$INSTDIR\Data\default.simba"
 Delete "$INSTDIR\COPYING"
 
 Delete "$INSTDIR\uninstall.exe"
@@ -96,29 +97,25 @@ RmDir /r "$INSTDIR\Includes"
 RmDir /r "$INSTDIR\Fonts"
 RmDir /r "$INSTDIR\Scripts"
 
-SetOutPath "$INSTDIR\Data"
-File ".\Simba\Data\default.simba"
 SetOutPath "$INSTDIR\Data\packages"
 File ".\Simba\Data\packages.ini"
 
-
+CreateDirectory "$INSTDIR\Data"
 CreateDirectory "$INSTDIR\Includes"
 CreateDirectory "$INSTDIR\Scripts"
-CreateDirectory "$INSTDIR\Scripts\wasp-premium"
+CreateDirectory "$INSTDIR\Scripts\waspscripts.com"
 
-inetc::get /caption "Downloading Simba" /nocancel "https://github.com/Villavu/Simba/releases/download/simba1400-release/Simba-Win32.exe" "$INSTDIR\Simba.exe" /end
+inetc::get /caption "Downloading Simba" /nocancel "https://github.com/Torwent/Simba/releases/download/Simba1400/Simba-Win32.exe" "$INSTDIR\Simba.exe" /end
 inetc::get /caption "Downloading License" /nocancel "https://raw.githubusercontent.com/Villavu/Simba/simba1500/COPYING" "$INSTDIR\COPYING" /end
+inetc::get /caption "Downloading Launcher" /nocancel "https://raw.githubusercontent.com/Torwent/wasp-launcher/main/launcher.simba" "$INSTDIR\Data\default.simba" /end
 inetc::get /caption "Downloading SRL-T" /nocancel "https://github.com/Torwent/SRL-T/archive/refs/heads/master.zip" "$INSTDIR\srlt.zip" /end
 inetc::get /caption "Downloading WaspLib" /nocancel "https://github.com/Torwent/WaspLib/archive/refs/heads/master.zip" "$INSTDIR\wl.zip" /end
-inetc::get /caption "Downloading wasp-free" /nocancel "https://github.com/Torwent/wasp-free/archive/refs/heads/master.zip" "$INSTDIR\wf.zip" /end
 
 nsisunz::Unzip  "$INSTDIR\srlt.zip" "$INSTDIR\srlt"
 nsisunz::Unzip  "$INSTDIR\wl.zip" "$INSTDIR\wl"
-nsisunz::Unzip  "$INSTDIR\wf.zip" "$INSTDIR\wf"
 
 Rename  "$INSTDIR\srlt\SRL-T-master" "$INSTDIR\Includes\SRL-T"
 Rename  "$INSTDIR\wl\WaspLib-master" "$INSTDIR\Includes\WaspLib"
-Rename  "$INSTDIR\wf\wasp-free-master" "$INSTDIR\Scripts\wasp-free"
 
 RmDir "$INSTDIR\srlt"
 RmDir "$INSTDIR\wl"
