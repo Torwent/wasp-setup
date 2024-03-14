@@ -1,6 +1,0 @@
-{$I SRL-T/osr.simba}
-{$I WaspLib/osr.simba}
-
-begin
-
-end.
