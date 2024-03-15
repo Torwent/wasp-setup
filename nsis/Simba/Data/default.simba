@@ -1,6 +1,6 @@
 (* Thank you for choosing waspscripts.com *)
 
-(* To start simply click the green play button. *)
+(* To start simply double click the green play button. *)
 
 begin
   SimbaRunInTab(ScriptPath + 'wasp-launcher.simba');
