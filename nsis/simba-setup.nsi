@@ -97,6 +97,8 @@ RmDir /r "$INSTDIR\Includes"
 RmDir /r "$INSTDIR\Fonts"
 RmDir /r "$INSTDIR\Scripts"
 
+SetOutPath "$INSTDIR\Data"
+File ".\Simba\Data\default.simba"
 SetOutPath "$INSTDIR\Data\packages"
 File ".\Simba\Data\packages.ini"
 
@@ -107,7 +109,7 @@ CreateDirectory "$INSTDIR\Scripts\waspscripts.com"
 
 inetc::get /caption "Downloading Simba" /nocancel "https://github.com/Torwent/Simba/releases/download/Simba1400/Simba-Win32.exe" "$INSTDIR\Simba.exe" /end
 inetc::get /caption "Downloading License" /nocancel "https://raw.githubusercontent.com/Villavu/Simba/simba1500/COPYING" "$INSTDIR\COPYING" /end
-inetc::get /caption "Downloading Launcher" /nocancel "https://raw.githubusercontent.com/Torwent/wasp-launcher/main/launcher.simba" "$INSTDIR\Data\default.simba" /end
+inetc::get /caption "Downloading Launcher" /nocancel "https://raw.githubusercontent.com/Torwent/wasp-launcher/main/launcher.simba" "$INSTDIR\Scripts\wasp-launcher.simba" /end
 inetc::get /caption "Downloading SRL-T" /nocancel "https://github.com/Torwent/SRL-T/archive/refs/heads/master.zip" "$INSTDIR\srlt.zip" /end
 inetc::get /caption "Downloading WaspLib" /nocancel "https://github.com/Torwent/WaspLib/archive/refs/heads/master.zip" "$INSTDIR\wl.zip" /end
 
@@ -119,26 +121,20 @@ Rename  "$INSTDIR\wl\WaspLib-master" "$INSTDIR\Includes\WaspLib"
 
 RmDir "$INSTDIR\srlt"
 RmDir "$INSTDIR\wl"
-RmDir "$INSTDIR\wf"
 RmDir "$INSTDIR\Includes\SRL-T\.github"
 RmDir "$INSTDIR\Includes\WaspLib\.github"
-RmDir "$INSTDIR\Scripts\wasp-free\.github"
 
 Delete "$INSTDIR\srlt.zip"
 Delete "$INSTDIR\wl.zip"
-Delete "$INSTDIR\wf.zip"
 
 Delete "$INSTDIR\Includes\SRL-T\.gitattributes"
 Delete "$INSTDIR\Includes\WaspLib\.gitattributes"
-Delete "$INSTDIR\Scripts\wasp-free\.gitattributes"
 
 Delete "$INSTDIR\Includes\SRL-T\.gitignore"
 Delete "$INSTDIR\Includes\WaspLib\.gitignore"
-Delete "$INSTDIR\Scripts\wasp-free\.gitignore"
 
 Delete "$INSTDIR\Includes\SRL-T\.simbapackage"
 Delete "$INSTDIR\Includes\WaspLib\.simbapackage"
-Delete "$INSTDIR\Scripts\wasp-free\.simbapackage"
 
 SectionEnd
 

@@ -1,6 +1,7 @@
-{$I SRL-T/osr.simba}
-{$I WaspLib/osr.simba}
+(* Thank you for choosing waspscripts.com *)
+
+(* To start simply click the green play button. *)
 
 begin
-
+  SimbaRunInTab(ScriptPath + 'wasp-launcher.simba');
 end.
