@@ -1,3 +1,21 @@
+## [0.7.4](https://github.com/Torwent/wasp-setup/compare/v0.7.3...v0.7.4) (2024-03-26)
+
+
+### Bug Fixes
+
+* force bump ([6838484](https://github.com/Torwent/wasp-setup/commit/6838484dc8b4cb2d18fec179afbf49399d9cabd6))
+
+
+
+## [0.7.3](https://github.com/Torwent/wasp-setup/compare/v0.7.2...v0.7.3) (2024-03-15)
+
+
+### Reverts
+
+* Revert "Delete default.simba" ([aeba97a](https://github.com/Torwent/wasp-setup/commit/aeba97a0beb71f2369b34f1185969149996007d8))
+
+
+
 ## [0.7.2](https://github.com/Torwent/wasp-setup/compare/v0.7.1...v0.7.2) (2023-07-09)
 
 
@@ -22,24 +40,6 @@
 ### Features
 
 * added a new .exe installer ([5ba21d0](https://github.com/Torwent/wasp-setup/commit/5ba21d00d36373e163ff21003cdcbb412f444181))
-
-
-
-## [0.6.2](https://github.com/Torwent/wasp-setup/compare/v0.6.1...v0.6.2) (2023-01-04)
-
-
-### Bug Fixes
-
-* typo in linux install script ([bf8f3b4](https://github.com/Torwent/wasp-setup/commit/bf8f3b461b2cffdff89eb313afa05749e3212c73))
-
-
-
-## [0.6.1](https://github.com/Torwent/wasp-setup/compare/v0.6.0...v0.6.1) (2023-01-03)
-
-
-### Bug Fixes
-
-* added link to commit in discord notification ([cc3357e](https://github.com/Torwent/wasp-setup/commit/cc3357ef92c86e329ee6e3eaa229359f11a74b1a))
 
 
 
