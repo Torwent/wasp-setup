@@ -35,7 +35,6 @@ If you don't have wget installed:
 sudo apt install wget -y
 ```
 
-
 Single command for a brand new server/computer that installs both osrs and Simba:
 ```bash
 wget https://raw.githubusercontent.com/Torwent/wasp-setup/master/linux/osrs-setup.sh && \
