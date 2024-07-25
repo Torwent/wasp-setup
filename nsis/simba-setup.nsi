@@ -107,7 +107,7 @@ CreateDirectory "$INSTDIR\Includes"
 CreateDirectory "$INSTDIR\Scripts"
 CreateDirectory "$INSTDIR\Scripts\waspscripts.com"
 
-inetc::get /caption "Downloading Simba" /nocancel "https://github.com/Torwent/Simba/releases/download/Simba1400/Simba-Win32.exe" "$INSTDIR\Simba.exe" /end
+inetc::get /caption "Downloading Simba" /nocancel "https://github.com/Torwent/Simba/releases/download/Simba1400/Simba-Win64.exe" "$INSTDIR\Simba.exe" /end
 inetc::get /caption "Downloading License" /nocancel "https://raw.githubusercontent.com/Villavu/Simba/simba1500/COPYING" "$INSTDIR\COPYING" /end
 inetc::get /caption "Downloading Launcher" /nocancel "https://raw.githubusercontent.com/Torwent/wasp-launcher/main/launcher.simba" "$INSTDIR\Scripts\wasp-launcher.simba" /end
 inetc::get /caption "Downloading SRL-T" /nocancel "https://github.com/Torwent/SRL-T/archive/refs/heads/master.zip" "$INSTDIR\srlt.zip" /end
