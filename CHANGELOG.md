@@ -1,3 +1,12 @@
+## [0.7.5](https://github.com/Torwent/wasp-setup/compare/v0.7.4...v0.7.5) (2024-07-25)
+
+
+### Bug Fixes
+
+* installer now installs 64 bits simba ([7e6b621](https://github.com/Torwent/wasp-setup/commit/7e6b621706b7a6ff4f7447b64ae85baca290f3c9))
+
+
+
 ## [0.7.4](https://github.com/Torwent/wasp-setup/compare/v0.7.3...v0.7.4) (2024-03-26)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * force bump ([5533584](https://github.com/Torwent/wasp-setup/commit/5533584aa056c95564325f495030be0cf12b8ec2))
-
-
-
-# [0.7.0](https://github.com/Torwent/wasp-setup/compare/v0.6.2...v0.7.0) (2023-03-12)
-
-
-### Features
-
-* added a new .exe installer ([5ba21d0](https://github.com/Torwent/wasp-setup/commit/5ba21d00d36373e163ff21003cdcbb412f444181))
 
 
 
