@@ -1,3 +1,12 @@
+## [0.8.1](https://github.com/Torwent/wasp-setup/compare/v0.8.0...v0.8.1) (2024-07-26)
+
+
+### Bug Fixes
+
+* .simba extensions ([ed2f9d8](https://github.com/Torwent/wasp-setup/commit/ed2f9d87d99c10eb02675f808372d01f688fe1d9))
+
+
+
 # [0.8.0](https://github.com/Torwent/wasp-setup/compare/v0.7.5...v0.8.0) (2024-07-25)
 
 
@@ -31,15 +40,6 @@
 ### Reverts
 
 * Revert "Delete default.simba" ([aeba97a](https://github.com/Torwent/wasp-setup/commit/aeba97a0beb71f2369b34f1185969149996007d8))
-
-
-
-## [0.7.2](https://github.com/Torwent/wasp-setup/compare/v0.7.1...v0.7.2) (2023-07-09)
-
-
-### Bug Fixes
-
-* should now add packages to the package manager properly ([3536f0f](https://github.com/Torwent/wasp-setup/commit/3536f0f16ed66a96ee6db6f4738d345077d7d5d8))
 
 
 
