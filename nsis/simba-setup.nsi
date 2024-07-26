@@ -81,7 +81,7 @@ Delete "$INSTDIR\${APP}.exe"
 Delete "$INSTDIR\${APP}32.exe"
 Delete "$INSTDIR\${APP}64.exe"
 Delete "$INSTDIR\Data\settings.ini"
-Delete "$INSTDIR\Data\default.${APP}"
+Delete "$INSTDIR\Data\default.simba"
 Delete "$INSTDIR\COPYING"
 
 Delete "$INSTDIR\uninstall.exe"
@@ -95,7 +95,7 @@ RmDir /r "$INSTDIR\Fonts"
 RmDir /r "$INSTDIR\Scripts"
 
 SetOutPath "$INSTDIR\Data"
-File ".\${APP}\Data\default.${APP}"
+File ".\${APP}\Data\default.simba"
 SetOutPath "$INSTDIR\Data\packages"
 File ".\${APP}\Data\packages.ini"
 
@@ -107,7 +107,7 @@ CreateDirectory "$INSTDIR\Scripts\waspscripts.com"
 inetc::get /caption "Downloading ${APP} 32 bits" /nocancel "https://github.com/Torwent/${APP}/releases/download/${APP}1400/${APP}-Win32.exe" "$INSTDIR\${APP}32.exe" /end
 inetc::get /caption "Downloading ${APP} 64 bits" /nocancel "https://github.com/Torwent/${APP}/releases/download/${APP}1400/${APP}-Win64.exe" "$INSTDIR\${APP}64.exe" /end
 inetc::get /caption "Downloading License" /nocancel "https://raw.githubusercontent.com/Villavu/${APP}/${APP}1500/COPYING" "$INSTDIR\COPYING" /end
-inetc::get /caption "Downloading Launcher" /nocancel "https://raw.githubusercontent.com/Torwent/wasp-launcher/main/launcher.${APP}" "$INSTDIR\Scripts\wasp-launcher.${APP}" /end
+inetc::get /caption "Downloading Launcher" /nocancel "https://raw.githubusercontent.com/Torwent/wasp-launcher/main/launcher.simba" "$INSTDIR\Scripts\wasp-launcher.simba" /end
 inetc::get /caption "Downloading SRL-T" /nocancel "https://github.com/Torwent/SRL-T/archive/refs/heads/master.zip" "$INSTDIR\srlt.zip" /end
 inetc::get /caption "Downloading WaspLib" /nocancel "https://github.com/Torwent/WaspLib/archive/refs/heads/master.zip" "$INSTDIR\wl.zip" /end
 
@@ -131,8 +131,8 @@ Delete "$INSTDIR\Includes\WaspLib\.gitattributes"
 Delete "$INSTDIR\Includes\SRL-T\.gitignore"
 Delete "$INSTDIR\Includes\WaspLib\.gitignore"
 
-Delete "$INSTDIR\Includes\SRL-T\.${APP}package"
-Delete "$INSTDIR\Includes\WaspLib\.${APP}package"
+Delete "$INSTDIR\Includes\SRL-T\.simbapackage"
+Delete "$INSTDIR\Includes\WaspLib\.simbapackage"
 
 SectionEnd
 
