@@ -17,103 +17,80 @@ cat << "EOF"
                    $   						                   |_|			   
 EOF
 
+# Install necessary packages
 sudo apt-get install curl tar libxtst-dev gtk2.0 libgtk2.0-dev libffi-dev libcap2-bin -y
-mkdir ~/Simba
-mkdir ~/Simba/Data
-mkdir ~/Simba/Data
-mkdir ~/Simba/Data/packages
-mkdir ~/Simba/Includes
-mkdir ~/Simba/Scripts
 
-wget -O ~/Simba/Simba.ico https://raw.githubusercontent.com/Villavu/Simba/simba1400/Source/Simba/Simba.ico
+# Create required directories
+SIMBA_DIR=~/Simba
+mkdir -p $SIMBA_DIR/Data/packages $SIMBA_DIR/Includes $SIMBA_DIR/Scripts
 
-case `dpkg --print-architecture` in
-  aarch64)
-    arch="AArch64";;
-  arm64)
-    arch="AArch64";;
-  amd64)
-    arch="Linux64";;
-  x86_64)
-    arch="Linux64";;
+# Download and install Simba
+wget -O $SIMBA_DIR/Simba.ico https://raw.githubusercontent.com/Villavu/Simba/simba1400/Source/Simba/Simba.ico
+
+case $(dpkg --print-architecture) in
+  aarch64|arm64) arch="AArch64";;
+  amd64|x86_64) arch="Linux64";;
   *)
-	echo "There's no binary for your architecture. You need to manually compile Simba.";
-	Exit 1;;
+    echo "No binary available for your architecture. You need to manually compile Simba."
+    exit 1;;
 esac
 
-echo "Installing Simba-${arch}"  
-wget -O ~/Simba/Simba https://github.com/Villavu/Simba/releases/download/simba1400-release/Simba-${arch}
+echo "Installing Simba-${arch}"
+wget -O $SIMBA_DIR/Simba https://github.com/Villavu/Simba/releases/download/simba1400-release/Simba-${arch}
 
-chmod +x ~/Simba/Simba
-sudo setcap cap_sys_ptrace=eip ~/Simba/Simba
+chmod +x $SIMBA_DIR/Simba
+sudo setcap cap_sys_ptrace=eip $SIMBA_DIR/Simba
 
-if ! grep -Fxq "alias simba" ~/.bashrc; then
-    echo 'alias simba="$HOME/Simba/Simba"' | sudo tee --append ~/.bashrc
-	source ~/.bashrc
+# Add alias to .bashrc if not present
+if ! grep -Fxq "alias simba=" ~/.bashrc; then
+    echo 'alias simba="$HOME/Simba/Simba"' >> ~/.bashrc
+    source ~/.bashrc
 fi
 
-if [ ! -f /usr/share/applications/simba.desktop ]; then
-	echo '[Desktop Entry]' | sudo tee --append /usr/share/applications/simba.desktop
-	echo 'Type=Application' | sudo tee --append /usr/share/applications/simba.desktop
-	echo 'Name=Simba' | sudo tee --append /usr/share/applications/simba.desktop
-	echo 'Comment=Simba 1400' | sudo tee --append /usr/share/applications/simba.desktop
-	echo 'Exec=~/Simba/Simba' | sudo tee --append /usr/share/applications/simba.desktop
-	echo 'Icon=/home/username/Simba/Simba.ico' | sudo tee --append /usr/share/applications/simba.desktop
-	echo 'Categories=Game' | sudo tee --append /usr/share/applications/simba.desktop
-	echo 'MimeType=text/simba;text/graph;' | sudo tee --append /usr/share/applications/simba.desktop
-	echo 'Terminal=false' | sudo tee --append /usr/share/applications/simba.desktop
-	echo 'Keywords=Simba;RuneScape;OSRS;' | sudo tee --append /usr/share/applications/simba.desktop
+# Create .desktop entry for Simba using echo
+DESKTOP_FILE=~/.local/share/applications/simba.desktop
+if [ ! -f $DESKTOP_FILE ]; then
+    mkdir -p ~/.local/share/applications
+    echo '[Desktop Entry]' > $DESKTOP_FILE
+    echo 'Type=Application' >> $DESKTOP_FILE
+    echo 'Name=Simba' >> $DESKTOP_FILE
+    echo 'Comment=Simba 1400' >> $DESKTOP_FILE
+    echo "Exec=$SIMBA_DIR/Simba" >> $DESKTOP_FILE
+    echo "Icon=$SIMBA_DIR/Simba.ico" >> $DESKTOP_FILE
+    echo 'Categories=Game' >> $DESKTOP_FILE
+    echo 'MimeType=text/simba;text/graph;' >> $DESKTOP_FILE
+    echo 'Terminal=false' >> $DESKTOP_FILE
+    echo 'Keywords=Simba;RuneScape;OSRS;' >> $DESKTOP_FILE
 fi
 
-echo Installing official SRL.
-echo
-echo
-echo [Villavu/SRL-Development]>>~/Simba/Data/packages/packages.ini
-echo Name=SRL>>~/Simba/Data/packages/packages.ini
-curl -L https://github.com/Villavu/SRL-Development/archive/refs/heads/master.zip > srl.zip
-unzip srl.zip
-rm srl.zip
-mv SRL* ~/Simba/Includes/SRL
+# Install SRL-T
+echo "Installing SRL-T..."
+echo '[Torwent/SRL-T]' >> $SIMBA_DIR/Data/packages/packages.ini
+echo 'Name=SRL-T' >> $SIMBA_DIR/Data/packages/packages.ini
+curl -L https://github.com/Torwent/SRL-T/archive/refs/heads/master.zip > srl-t.zip
+unzip srl-t.zip
+rm srl-t.zip
+mv SRL-T* $SIMBA_DIR/Includes/SRL-T
 
-echo Installing SRL-T.
-echo
-echo
-echo [Torwent/SRL-T]>>~/Simba/Data/packages/packages.ini
-echo Name=SRL-T>>~/Simba/Data/packages/packages.ini
-curl -L https://github.com/Torwent/SRL/archive/refs/heads/master.zip > srl.zip
-unzip srl.zip
-rm srl.zip
-mv SRL* ~/Simba/Includes/SRL-T
-
-echo Installing SRL-F.
-echo
-echo
-echo [J-Flight/SRL-F]]>>~/Simba/Data/packages/packages.ini
-echo Name=SRL-F>>~/Simba/Data/packages/packages.ini
-curl -L https://github.com/J-Flight/SRL-F/archive/refs/heads/master.zip > srl.zip
-unzip srl.zip
-rm srl.zip
-mv SRL* ~/Simba/Includes/SRL-F
-
-
-echo Installing WaspLib...
-echo
-echo
-echo [Torwent/WaspLib]>>~/Simba/Data/packages/packages.ini
-echo Name=WaspLib>>~/Simba/Data/packages/packages.ini
+# Install WaspLib
+echo "Installing WaspLib..."
+echo '[Torwent/WaspLib]' >> $SIMBA_DIR/Data/packages/packages.ini
+echo 'Name=WaspLib' >> $SIMBA_DIR/Data/packages/packages.ini
 curl -L https://github.com/Torwent/WaspLib/archive/refs/heads/master.zip > wl.zip
 unzip wl.zip
 rm wl.zip
-mv WaspLib-master ~/Simba/Includes/WaspLib
+mv WaspLib-master $SIMBA_DIR/Includes/WaspLib
 
-
-echo Installing Wasp Free Scripts...
-echo
-echo
-echo [Torwent/wasp-free]>>~/Simba/Data/packages/packages.ini
-echo Name=wasp-free>>~/Simba/Data/packages/packages.ini
+# Install Wasp Free Scripts
+echo "Installing Wasp Free Scripts..."
+echo '[Torwent/wasp-free]' >> $SIMBA_DIR/Data/packages/packages.ini
+echo 'Name=wasp-free' >> $SIMBA_DIR/Data/packages/packages.ini
 curl -L https://github.com/Torwent/wasp-free/archive/refs/heads/master.zip > wf.zip
 unzip wf.zip
 rm wf.zip
-mv wasp-free-master ~/Simba/Scripts/wasp-free
-mkdir ~/Simba/Scripts/wasp-premium
+mv wasp-free-master $SIMBA_DIR/Scripts/wasp-free
+
+# Create directory for premium scripts
+mkdir -p $SIMBA_DIR/Scripts/wasp-premium
+
+echo "Installation complete. You may need to restart your session to apply changes."
