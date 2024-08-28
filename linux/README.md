@@ -1,10 +1,6 @@
 # Wasp-Linux-Setup
 Linux installation setup for Simba, RuneLite, and associated libraries.
 
-## Introduction
-
-This guide provides detailed instructions on how to install and uninstall Simba and RuneLite, including setting the necessary permissions.
-
 ### Simba Installation
 
 1. **Make the Script Executable:**
