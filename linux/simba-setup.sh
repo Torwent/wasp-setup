@@ -56,7 +56,7 @@ if [ ! -f $DESKTOP_FILE ]; then
   echo 'Type=Application' >>$DESKTOP_FILE
   echo 'Name=Simba' >>$DESKTOP_FILE
   echo 'Comment=Simba 1400' >>$DESKTOP_FILE
-  echo "Exec=$SIMBA_DIR/Simba" >>$DESKTOP_FILE
+  echo "Exec=env LC_ALL=C $SIMBA_DIR/Simba" >>$DESKTOP_FILE
   echo "Icon=$SIMBA_DIR/Simba.ico" >>$DESKTOP_FILE
   echo 'Categories=Game' >>$DESKTOP_FILE
   echo 'MimeType=text/simba;text/graph;' >>$DESKTOP_FILE
