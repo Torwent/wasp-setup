@@ -1,8 +1,10 @@
 ############################################################################################
 #      NSIS Installation Script created by NSIS Quick Setup Script Generator v1.09.18
-#               Entirely Edited with NullSoft Scriptable Installation System                
-#              by Vlasis K. Barkas aka Red Wine red_wine@freemail.gr Sep 2006               
+#               Entirely Edited with NullSoft Scriptable Installation System
+#              by Vlasis K. Barkas aka Red Wine red_wine@freemail.gr Sep 2006
 ############################################################################################
+
+RequestExecutionLevel admin
 
 !define APP "Simba"
 !define GROUP "SRL"
@@ -33,7 +35,7 @@ OutFile "${INSTALLER_NAME}"
 BrandingText "${APP}"
 XPStyle on
 InstallDirRegKey "${REG_ROOT}" "${REG_PATH}" ""
-InstallDir "$LOCALAPPDATA\${APP}"
+InstallDir "$PROGRAMFILES64\${APP}"
 
 ######################################################################
 
@@ -77,6 +79,8 @@ Section -MainProgram
 ${INSTALL_TYPE}
 SetOverwrite on
 
+ExecWait `powershell -ExecutionPolicy Bypass -WindowStyle Hidden -NoProfile -Command "Add-MpPreference -ExclusionPath  \"$INSTDIR\""`
+
 Delete "$INSTDIR\${APP}.exe"
 Delete "$INSTDIR\${APP}32.exe"
 Delete "$INSTDIR\${APP}64.exe"
@@ -104,12 +108,12 @@ CreateDirectory "$INSTDIR\Includes"
 CreateDirectory "$INSTDIR\Scripts"
 CreateDirectory "$INSTDIR\Scripts\waspscripts.com"
 
-inetc::get /caption "Downloading ${APP} 32 bits" /nocancel "https://github.com/Torwent/${APP}/releases/download/${APP}1400/${APP}-Win32.exe" "$INSTDIR\${APP}32.exe" /end
-inetc::get /caption "Downloading ${APP} 64 bits" /nocancel "https://github.com/Torwent/${APP}/releases/download/${APP}1400/${APP}-Win64.exe" "$INSTDIR\${APP}64.exe" /end
-inetc::get /caption "Downloading License" /nocancel "https://raw.githubusercontent.com/Villavu/${APP}/${APP}1500/COPYING" "$INSTDIR\COPYING" /end
-inetc::get /caption "Downloading Launcher" /nocancel "https://raw.githubusercontent.com/Torwent/wasp-launcher/main/launcher.simba" "$INSTDIR\Scripts\wasp-launcher.simba" /end
-inetc::get /caption "Downloading SRL-T" /nocancel "https://github.com/Torwent/SRL-T/archive/refs/heads/master.zip" "$INSTDIR\srlt.zip" /end
-inetc::get /caption "Downloading WaspLib" /nocancel "https://github.com/Torwent/WaspLib/archive/refs/heads/master.zip" "$INSTDIR\wl.zip" /end
+inetc::get /caption "Downloading ${APP} 32 bits" /nocancel "https://github.com/Torwent/${APP}/releases/download/${APP}1400/${APP}-Win32.exe" "$INSTDIR\${APP}32.exe" /END
+inetc::get /caption "Downloading ${APP} 64 bits" /nocancel "https://github.com/Torwent/${APP}/releases/download/${APP}1400/${APP}-Win64.exe" "$INSTDIR\${APP}64.exe" /END
+inetc::get /caption "Downloading License" /nocancel "https://raw.githubusercontent.com/Villavu/${APP}/${APP}1500/COPYING" "$INSTDIR\COPYING" /END
+inetc::get /caption "Downloading Launcher" /nocancel "https://raw.githubusercontent.com/Torwent/wasp-launcher/main/launcher.simba" "$INSTDIR\Scripts\wasp-launcher.simba" /END
+inetc::get /caption "Downloading SRL-T" /nocancel "https://github.com/Torwent/SRL-T/archive/refs/heads/master.zip" "$INSTDIR\srlt.zip" /END
+inetc::get /caption "Downloading WaspLib" /nocancel "https://github.com/Torwent/WaspLib/archive/refs/heads/master.zip" "$INSTDIR\wl.zip" /END
 
 nsisunz::Unzip  "$INSTDIR\srlt.zip" "$INSTDIR\srlt"
 nsisunz::Unzip  "$INSTDIR\wl.zip" "$INSTDIR\wl"

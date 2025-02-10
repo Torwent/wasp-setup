@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+    <Package Name="Simba" Manufacturer="SRL" Version="1.4.00" Scope="perMachine" Compressed="yes" UpgradeCode="796a0f47-1412-470b-890a-005f788e6432" >
+        <File Source="Simba32.exe" />
+        <File Source="Simba64.exe" />
+        <Directory Id="SIMBADATADIR" Name="Data" />
+        <Component Id="CREATEDIR" Guid="7b7afb85-08b1-48b7-9c01-9c176c096947">
+            <CreateFolder Directory="SIMBADATADIR"/>
+        </Component>
+
+        <File Source="default.simba" Directory="SIMBADATADIR" />
+    </Package>
+</Wix>
