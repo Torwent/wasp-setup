@@ -34,7 +34,6 @@ Caption "${APP}"
 OutFile "${INSTALLER_NAME}"
 BrandingText "${APP}"
 XPStyle on
-InstallDirRegKey "${REG_ROOT}" "${REG_PATH}" ""
 InstallDir "$PROGRAMFILES64\${APP}"
 
 ######################################################################
