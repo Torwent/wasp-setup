@@ -1,3 +1,12 @@
+## [0.9.2](https://github.com/Torwent/wasp-setup/compare/v0.9.1...v0.9.2) (2025-02-12)
+
+
+### Bug Fixes
+
+* **NSIS:** grant full access to the install folder ([7ab7fbc](https://github.com/Torwent/wasp-setup/commit/7ab7fbc904f8108c78d369bac76577a67f1ff75d))
+
+
+
 ## [0.9.1](https://github.com/Torwent/wasp-setup/compare/v0.9.0...v0.9.1) (2025-02-11)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * .simba extensions ([ed2f9d8](https://github.com/Torwent/wasp-setup/commit/ed2f9d87d99c10eb02675f808372d01f688fe1d9))
-
-
-
-# [0.8.0](https://github.com/Torwent/wasp-setup/compare/v0.7.5...v0.8.0) (2024-07-25)
-
-
-### Features
-
-* now installs both 32 and 64 bits Simba ([07cee99](https://github.com/Torwent/wasp-setup/commit/07cee9913eca80cb2fca48c32b53a824ff14b6ae))
 
 
 
