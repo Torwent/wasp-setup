@@ -29,6 +29,12 @@ chmod +x simba-setup.sh
 ./simba-setup.sh
 ```
 
+The script will:
+- Install required dependencies
+- Set up necessary directories and download required files
+- Add a `simba` alias to your `.bashrc`
+- Create a `.desktop` entry for easy access
+
 ### RuneLite
 ```bash
 wget https://raw.githubusercontent.com/Torwent/wasp-setup/master/linux/runelite-setup.sh
@@ -36,12 +42,28 @@ chmod +x runelite-setup.sh
 ./runelite-setup.sh
 ```
 
+The script will:
+- Install required dependencies
+- Download the latest `RuneLite.jar` and place it in `/usr/local/bin`
+- Set necessary permissions for the `RuneLite.jar` file
+- Add a `runelite` alias to `/etc/bash.bashrc` for easy terminal access
+- Download and set up the RuneLite icon
+- Create a `.desktop` entry for RuneLite
+- Copy `myprofile.properties` to the RuneLite profiles directory
+
 ### Bolt Launcher (includes RuneLite)
 ```bash
 wget https://raw.githubusercontent.com/Torwent/wasp-setup/master/linux/bolt-setup.sh
 chmod +x bolt-setup.sh
 ./bolt-setup.sh
 ```
+
+The script will:
+- Install required dependencies
+- Build Bolt Launcher from source
+- Configure Java environment
+- Set up RuneLite profiles automatically
+- Create desktop entries and commands
 
 ### All-in-One Commands
 
@@ -75,12 +97,24 @@ chmod +x simba-uninstall.sh
 ./simba-uninstall.sh
 ```
 
+The script will:
+- Backup directory `~/Simba/Scripts` to `/home/$USER`
+- Remove the Simba directory and its contents
+- Remove the `simba` alias from your `.bashrc`
+- Delete the `.desktop` entry from local and system-wide directories
+
 #### RuneLite
 ```bash
 wget https://raw.githubusercontent.com/Torwent/wasp-setup/master/linux/runelite-uninstall.sh
 chmod +x runelite-uninstall.sh
 ./runelite-uninstall.sh
 ```
+
+The script will:
+- Remove the `RuneLite.jar` file from `/usr/local/bin`
+- Remove the `runelite` alias from `/etc/bash.bashrc`
+- Delete the RuneLite icon from `/usr/local/share`
+- Remove the RuneLite `.desktop` entry from `/usr/share/applications`
 
 #### Bolt Launcher
 ```bash
@@ -89,9 +123,15 @@ chmod +x bolt-uninstall.sh
 ./bolt-uninstall.sh
 ```
 
+The script will:
+- Remove Bolt executable and libraries
+- Remove configuration files
+- Clean up environment variables
+- Remove desktop entries
+
 ## Requirements
 - Windows: Windows 7 or higher
 - Linux: Debian 10+ or Ubuntu-based distribution
 
 ## Note
-After installation, you may need to log out and log back in for all changes to take effect.
+After installation, you may need to log out and log back in for all changes to take effect. This ensures that environment variables and desktop entries are properly reloaded.
