@@ -1,44 +1,97 @@
 ```
  $g,_                               w$	
- $$$$&w,      _, _   _ ,_    __,,g$$$$
- _&$$$$$$$&,  _"*$r ,$P" __,g$$$$$$$$_		__          __             _____           _       _   		
-  _'*&$&$$$$$,   _*_"_   ,$$$$$$&&P"_		\ \        / /            / ____|         (_)     | |     
-         _"&$&r  j$$$E  _$&&*  _      		 \ \  /\  / __ _ ___ _ __| (___   ___ _ __ _ _ __ | |_ ___ 
-             1$ $g'*"g& $&_           		  \ \/  \/ / _` / __| '_ \\___ \ / __| '__| | '_ \| __/ __|
-              ] _&$$$$' L             		   \  /\  | (_| \__ | |_) ____) | (__| |  | | |_) | |_\__ \
-         _,g&&&rg&,",gg &$$&w,        		    \/  \/ \__,_|___| .__|_____/ \___|_|  |_| .__/ \__|___/
+ $$$$&w,      *, *   * ,*    __,,g$$$$
+ *&$$$$$$$&,  *"*$r ,$P" __,g$$$$$$$$_		**          **             _____           *       *   		
+  *'*&$&$$$$$,   **_"_   ,$$$$$$&&P"_		\ \        / /            / ____|         (_)     | |     
+         *"&$&r  j$$$E  *$&&*  *      		 \ \  /\  / *_ *_*_ *_*| (___   ___ *_* * *__ | |_ ___ 
+             1$ $g'*"g& $&_           		  \ \/  \/ / *` / *_| '_ \\___ \ / **| '**| | '_ \| **/ **|
+              ] *&$$$$' L             		   \  /\  | (*| \__ | |_) ____) | (__| |  | | |_) | |_\__ \
+         *,g&&&rg&,",gg &$$&w,        		    \/  \/ \*_,_|___| .__|_____/ \___|_|  |_| .__/ \__|___/
        ,$$$$$F__$$$$$$$ _"$$$$$g      				    | |                     | | 
-      g$$$$$F   "&$$$&"   _$$$$$&				    |_|                     |_| 
-    _$$$$$&F    _,g*,,      $$$$$$r   
-     _"*&*_      "$&$"      _"**"__   
+      g$$$$$F   "&$$$&"   *$$$$$&				    |*|                     |_| 
+    *$$$$$&F    *,g*,,      $$$$$$r   
+     *"*&**      "$&$"      *"**"*_   
                    $ 
 ```
 
-Automated WaspScripts setup script
+# Wasp-Setup
+Automated setup scripts for Simba, RuneLite, and Bolt Launcher on Windows and Linux.
 
-For windows download the [.cmd version](https://raw.githubusercontent.com/Torwent/wasp-setup/master/setup.cmd), save it and run it.
+## Windows Installation
+For Windows, download the [setup.cmd](https://raw.githubusercontent.com/Torwent/wasp-setup/master/setup.cmd) file, save it, and run it.
 
-For Linux, assuming you are using Debian 10+ and Bash for your shell, you should only need to copy paste this command:
+## Linux Installation Scripts
 
-Official OSRS Client:
+### Simba
 ```bash
-wget https://raw.githubusercontent.com/Torwent/wasp-setup/master/linux/osrs-setup.sh && bash osrs-setup.sh && rm -rf osrs-setup.sh
+wget https://raw.githubusercontent.com/Torwent/wasp-setup/master/linux/simba-setup.sh
+chmod +x simba-setup.sh
+./simba-setup.sh
 ```
 
-Simba:
+### RuneLite
 ```bash
-wget https://raw.githubusercontent.com/Torwent/wasp-setup/master/linux/setup.sh && bash setup.sh && rm -rf setup.sh
+wget https://raw.githubusercontent.com/Torwent/wasp-setup/master/linux/runelite-setup.sh
+chmod +x runelite-setup.sh
+./runelite-setup.sh
 ```
 
-If you don't have wget installed:
+### Bolt Launcher (includes RuneLite)
 ```bash
-sudo apt install wget -y
+wget https://raw.githubusercontent.com/Torwent/wasp-setup/master/linux/bolt-setup.sh
+chmod +x bolt-setup.sh
+./bolt-setup.sh
 ```
 
-Single command for a brand new server/computer that installs both osrs and Simba:
+### All-in-One Commands
+
+#### RuneLite + Simba
 ```bash
-wget https://raw.githubusercontent.com/Torwent/wasp-setup/master/linux/osrs-setup.sh && \
-bash osrs-setup.sh && rm -rf osrs-setup.sh && \
-wget https://raw.githubusercontent.com/Torwent/wasp-setup/master/linux/setup.sh && \
-bash setup.sh && rm -rf setup.sh
+wget https://raw.githubusercontent.com/Torwent/wasp-setup/master/linux/runelite-setup.sh && \
+chmod +x runelite-setup.sh && ./runelite-setup.sh && \
+wget https://raw.githubusercontent.com/Torwent/wasp-setup/master/linux/simba-setup.sh && \
+chmod +x simba-setup.sh && ./simba-setup.sh
 ```
+
+#### Bolt Launcher + Simba
+```bash
+wget https://raw.githubusercontent.com/Torwent/wasp-setup/master/linux/bolt-setup.sh && \
+chmod +x bolt-setup.sh && ./bolt-setup.sh && \
+wget https://raw.githubusercontent.com/Torwent/wasp-setup/master/linux/simba-setup.sh && \
+chmod +x simba-setup.sh && ./simba-setup.sh
+```
+
+## Uninstallation Scripts
+
+### Windows
+For Windows, uninstall through Windows Control Panel.
+
+### Linux
+
+#### Simba
+```bash
+wget https://raw.githubusercontent.com/Torwent/wasp-setup/master/linux/simba-uninstall.sh
+chmod +x simba-uninstall.sh
+./simba-uninstall.sh
+```
+
+#### RuneLite
+```bash
+wget https://raw.githubusercontent.com/Torwent/wasp-setup/master/linux/runelite-uninstall.sh
+chmod +x runelite-uninstall.sh
+./runelite-uninstall.sh
+```
+
+#### Bolt Launcher
+```bash
+wget https://raw.githubusercontent.com/Torwent/wasp-setup/master/linux/bolt-uninstall.sh
+chmod +x bolt-uninstall.sh
+./bolt-uninstall.sh
+```
+
+## Requirements
+- Windows: Windows 7 or higher
+- Linux: Debian 10+ or Ubuntu-based distribution
+
+## Note
+After installation, you may need to log out and log back in for all changes to take effect.
