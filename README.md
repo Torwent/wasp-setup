@@ -18,7 +18,7 @@
 Automated setup scripts for Simba, RuneLite, and Bolt Launcher on Windows and Linux.
 
 ## Windows Installation
-For Windows, download the [setup.cmd](https://raw.githubusercontent.com/Torwent/wasp-setup/master/simba-setup.cmd) file, save it, and run it.
+For Windows, download the [setup.cmd](./windows/simba-setup.cmd) file, save it, and run it.
 
 ## Linux Installation Scripts
 
