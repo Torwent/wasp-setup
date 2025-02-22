@@ -1,3 +1,12 @@
+## [0.9.3](https://github.com/Torwent/wasp-setup/compare/v0.9.2...v0.9.3) (2025-02-22)
+
+
+### Bug Fixes
+
+* force bump ([83659d5](https://github.com/Torwent/wasp-setup/commit/83659d591c5ca2a5a6fc11c6b018c99abb3a7dfe))
+
+
+
 ## [0.9.2](https://github.com/Torwent/wasp-setup/compare/v0.9.1...v0.9.2) (2025-02-12)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * force bump ([4c35e39](https://github.com/Torwent/wasp-setup/commit/4c35e39903a00386fbbf4cc515e0870697f145a6))
-
-
-
-## [0.8.1](https://github.com/Torwent/wasp-setup/compare/v0.8.0...v0.8.1) (2024-07-26)
-
-
-### Bug Fixes
-
-* .simba extensions ([ed2f9d8](https://github.com/Torwent/wasp-setup/commit/ed2f9d87d99c10eb02675f808372d01f688fe1d9))
 
 
 
