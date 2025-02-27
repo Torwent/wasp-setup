@@ -34,7 +34,7 @@ Caption "${APP}"
 OutFile "${INSTALLER_NAME}"
 BrandingText "${APP}"
 XPStyle on
-InstallDir "$PROGRAMFILES64\${APP}"
+InstallDir "$LOCALAPPDATA\${APP}"
 
 ######################################################################
 
