@@ -1,3 +1,12 @@
+## [0.9.4](https://github.com/Torwent/wasp-setup/compare/v0.9.3...v0.9.4) (2025-02-27)
+
+
+### Bug Fixes
+
+* move installdir back to localappdata ([bdda3be](https://github.com/Torwent/wasp-setup/commit/bdda3be9561802c2b17f62db599e60ffd31370f3))
+
+
+
 ## [0.9.3](https://github.com/Torwent/wasp-setup/compare/v0.9.2...v0.9.3) (2025-02-22)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * read notes ([d7ff93f](https://github.com/Torwent/wasp-setup/commit/d7ff93fc480cae26a28112e25e6fecb4ce28e4a1))
-
-
-
-## [0.8.2](https://github.com/Torwent/wasp-setup/compare/v0.8.1...v0.8.2) (2024-09-06)
-
-
-### Bug Fixes
-
-* force bump ([4c35e39](https://github.com/Torwent/wasp-setup/commit/4c35e39903a00386fbbf4cc515e0870697f145a6))
 
 
 
