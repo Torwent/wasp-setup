@@ -1,3 +1,12 @@
+## [0.9.5](https://github.com/Torwent/wasp-setup/compare/v0.9.4...v0.9.5) (2025-03-24)
+
+
+### Bug Fixes
+
+* remove powershell script that messes with the antivirus ([f6c0dc7](https://github.com/Torwent/wasp-setup/commit/f6c0dc714f6515134ff5eb92305698dd20a60e7b))
+
+
+
 ## [0.9.4](https://github.com/Torwent/wasp-setup/compare/v0.9.3...v0.9.4) (2025-02-27)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * make the installer ignore the previous install path registry key ([a3e54ed](https://github.com/Torwent/wasp-setup/commit/a3e54ed6d0fd1d8900c10e9e499496a765248ca4))
-
-
-
-# [0.9.0](https://github.com/Torwent/wasp-setup/compare/v0.8.2...v0.9.0) (2025-02-10)
-
-
-### Features
-
-* read notes ([d7ff93f](https://github.com/Torwent/wasp-setup/commit/d7ff93fc480cae26a28112e25e6fecb4ce28e4a1))
 
 
 
