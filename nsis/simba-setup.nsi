@@ -1,7 +1,7 @@
 RequestExecutionLevel admin
 
 !define GROUP "SRL"
-!define VERSION "2.0.0.0"
+!define VERSION "2.0.0.1"
 !define COPYRIGHT "SRL"
 !define DESCRIPTION "Application"
 !define INSTALLER_NAME ".\simba-setup.exe"
@@ -12,7 +12,7 @@ RequestExecutionLevel admin
 
 ######################################################################
 
-VIProductVersion  "${VERSION}"
+VIProductVersion "${VERSION}"
 VIAddVersionKey "ProductName"  "Simba"
 VIAddVersionKey "CompanyName"  "${GROUP}"
 VIAddVersionKey "LegalCopyright"  "${COPYRIGHT}"
