@@ -1,10 +1,18 @@
+## [0.9.7](https://github.com/Torwent/wasp-setup/compare/v0.9.6...v0.9.7) (2025-04-08)
+
+
+### Bug Fixes
+
+* update version ([1512d81](https://github.com/Torwent/wasp-setup/commit/1512d814116efa05f90693b4ec441989c7c4901d))
+
+
+
 ## [0.9.6](https://github.com/Torwent/wasp-setup/compare/v0.9.5...v0.9.6) (2025-04-08)
 
 
 ### Bug Fixes
 
 * remove the app variable ([1fae171](https://github.com/Torwent/wasp-setup/commit/1fae17180473404aafa3f9cfe5720ff7276c609e))
-* update version ([1512d81](https://github.com/Torwent/wasp-setup/commit/1512d814116efa05f90693b4ec441989c7c4901d))
 
 
 
@@ -32,15 +40,6 @@
 ### Bug Fixes
 
 * force bump ([83659d5](https://github.com/Torwent/wasp-setup/commit/83659d591c5ca2a5a6fc11c6b018c99abb3a7dfe))
-
-
-
-## [0.9.2](https://github.com/Torwent/wasp-setup/compare/v0.9.1...v0.9.2) (2025-02-12)
-
-
-### Bug Fixes
-
-* **NSIS:** grant full access to the install folder ([7ab7fbc](https://github.com/Torwent/wasp-setup/commit/7ab7fbc904f8108c78d369bac76577a67f1ff75d))
 
 
 
