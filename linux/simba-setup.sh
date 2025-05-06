@@ -105,12 +105,20 @@ sudo apt-get install fontconfig xfonts-utils -y
 # Download and install the font
 wget -O /tmp/YaHei.Consolas.1.12.zip https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/uigroupcode/YaHei.Consolas.1.12.zip
 unzip /tmp/YaHei.Consolas.1.12.zip -d /tmp
-sudo mkdir -p /usr/share/fonts/consolas
-sudo mv /tmp/YaHei.Consolas.1.12.ttf /usr/share/fonts/consolas/
-sudo chmod 644 /usr/share/fonts/consolas/YaHei.Consolas.1.12.ttf
-cd /usr/share/fonts/consolas
+
+# Install to a directory in Simba's font search path
+sudo mkdir -p /usr/share/fonts/truetype/consolas
+sudo mv /tmp/YaHei.Consolas.1.12.ttf /usr/share/fonts/truetype/consolas/
+sudo chmod 644 /usr/share/fonts/truetype/consolas/YaHei.Consolas.1.12.ttf
+
+# Create symbolic link in user's .fonts directory
+mkdir -p ~/.fonts
+ln -sf /usr/share/fonts/truetype/consolas/YaHei.Consolas.1.12.ttf ~/.fonts/
+
+# Update font cache
+cd /usr/share/fonts/truetype/consolas
 sudo mkfontscale && sudo mkfontdir && sudo fc-cache -fv
-echo "Consolas font installed successfully."
+echo "Consolas font installed to system directory with symbolic link in user directory."
 echo "####################################################"
 
 echo -e "\033[0;33mSet JAVA version to openjdk-17-jre for RemoteInput\033[0m"
