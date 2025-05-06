@@ -17,6 +17,7 @@ cat <<"EOF"
                    $   						                   |_|			   
 EOF
 
+
 # Install necessary packages
 sudo apt-get install curl tar libxtst-dev gtk2.0 libgtk2.0-dev libffi-dev libcap2-bin default-jre openjdk-17-jre -y
 
@@ -102,23 +103,24 @@ echo "Installing Consolas font..."
 # Install required font tools if not present
 sudo apt-get install fontconfig xfonts-utils -y
 
-# Download and install the font
-wget -O /tmp/YaHei.Consolas.1.12.zip https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/uigroupcode/YaHei.Consolas.1.12.zip
-unzip /tmp/YaHei.Consolas.1.12.zip -d /tmp
-
-# Install to a directory in Simba's font search path
+# Create directories for the font
 sudo mkdir -p /usr/share/fonts/truetype/consolas
-sudo mv /tmp/YaHei.Consolas.1.12.ttf /usr/share/fonts/truetype/consolas/
-sudo chmod 644 /usr/share/fonts/truetype/consolas/YaHei.Consolas.1.12.ttf
+mkdir -p ~/.fonts
+
+# Download and install Consolas font
+# Note: This uses a GitHub repo that hosts the Consolas TTF file
+echo "Downloading Consolas font..."
+wget -O /tmp/Consolas.ttf https://github.com/tsenart/sight/raw/master/fonts/Consolas.ttf
+sudo cp /tmp/Consolas.ttf /usr/share/fonts/truetype/consolas/
+sudo chmod 644 /usr/share/fonts/truetype/consolas/Consolas.ttf
 
 # Create symbolic link in user's .fonts directory
-mkdir -p ~/.fonts
-ln -sf /usr/share/fonts/truetype/consolas/YaHei.Consolas.1.12.ttf ~/.fonts/
+ln -sf /usr/share/fonts/truetype/consolas/Consolas.ttf ~/.fonts/
 
 # Update font cache
 cd /usr/share/fonts/truetype/consolas
 sudo mkfontscale && sudo mkfontdir && sudo fc-cache -fv
-echo "Consolas font installed to system directory with symbolic link in user directory."
+echo "Consolas font installed successfully to system directory with symbolic link in user directory."
 echo "####################################################"
 
 echo -e "\033[0;33mSet JAVA version to openjdk-17-jre for RemoteInput\033[0m"
