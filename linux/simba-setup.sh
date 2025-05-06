@@ -94,7 +94,23 @@ mv wasp-free-master $SIMBA_DIR/Scripts/wasp-free
 # Create directory for premium scripts
 mkdir -p $SIMBA_DIR/Scripts/wasp-premium
 
+# Install Consolas font
 echo ""
+echo "####################################################"
+echo "Installing Consolas font..."
+
+# Install required font tools if not present
+sudo apt-get install fontconfig xfonts-utils -y
+
+# Download and install the font
+wget -O /tmp/YaHei.Consolas.1.12.zip https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/uigroupcode/YaHei.Consolas.1.12.zip
+unzip /tmp/YaHei.Consolas.1.12.zip -d /tmp
+sudo mkdir -p /usr/share/fonts/consolas
+sudo mv /tmp/YaHei.Consolas.1.12.ttf /usr/share/fonts/consolas/
+sudo chmod 644 /usr/share/fonts/consolas/YaHei.Consolas.1.12.ttf
+cd /usr/share/fonts/consolas
+sudo mkfontscale && sudo mkfontdir && sudo fc-cache -fv
+echo "Consolas font installed successfully."
 echo "####################################################"
 
 echo -e "\033[0;33mSet JAVA version to openjdk-17-jre for RemoteInput\033[0m"
