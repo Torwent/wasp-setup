@@ -70,7 +70,7 @@ InstallDir "$LOCALAPPDATA\Simba"
 Section -MainProgram
 ${INSTALL_TYPE}
 SetOverwrite on
-AccessControl::GrantOnFile  "$INSTDIR" "(S-1-5-32-545)" "FullAccess"
+AccessControl::GrantOnFile "$INSTDIR" "(S-1-5-32-545)" "FullAccess"
 
 Delete "$INSTDIR\Simba.exe"
 Delete "$INSTDIR\Simba32.exe"
@@ -78,8 +78,8 @@ Delete "$INSTDIR\Simba64.exe"
 Delete "$INSTDIR\Data\settings.ini"
 Delete "$INSTDIR\Data\default.simba"
 Delete "$INSTDIR\COPYING"
-
 Delete "$INSTDIR\uninstall.exe"
+
 !ifdef WEB_SITE
 Delete "$INSTDIR\Simba website.url"
 !endif
@@ -98,34 +98,32 @@ CreateDirectory "$INSTDIR\Data"
 CreateDirectory "$INSTDIR\Includes"
 CreateDirectory "$INSTDIR\Scripts"
 CreateDirectory "$INSTDIR\Scripts\waspscripts.com"
+CreateDirectory "$INSTDIR\srlt"
+CreateDirectory "$INSTDIR\wl"
 
-inetc::get /caption "Downloading Simba 32 bits" /nocancel "https://github.com/Torwent/Simba/releases/download/Simba1400/Simba-Win32.exe" "$INSTDIR\Simba32.exe" /END
 inetc::get /caption "Downloading Simba 64 bits" /nocancel "https://github.com/Torwent/Simba/releases/download/Simba1400/Simba-Win64.exe" "$INSTDIR\Simba64.exe" /END
 inetc::get /caption "Downloading License" /nocancel "https://raw.githubusercontent.com/Villavu/Simba/Simba1500/COPYING" "$INSTDIR\COPYING" /END
 inetc::get /caption "Downloading Launcher" /nocancel "https://raw.githubusercontent.com/Torwent/wasp-launcher/main/launcher.simba" "$INSTDIR\Scripts\wasp-launcher.simba" /END
 inetc::get /caption "Downloading SRL-T" /nocancel "https://github.com/Torwent/SRL-T/archive/refs/heads/master.zip" "$INSTDIR\srlt.zip" /END
 inetc::get /caption "Downloading WaspLib" /nocancel "https://github.com/Torwent/WaspLib/archive/refs/heads/master.zip" "$INSTDIR\wl.zip" /END
 
-nsisunz::Unzip  "$INSTDIR\srlt.zip" "$INSTDIR\srlt"
-nsisunz::Unzip  "$INSTDIR\wl.zip" "$INSTDIR\wl"
+nsisunz::Unzip "$INSTDIR\srlt.zip" "$INSTDIR\srlt"
+nsisunz::Unzip "$INSTDIR\wl.zip" "$INSTDIR\wl"
 
 Rename  "$INSTDIR\srlt\SRL-T-master" "$INSTDIR\Includes\SRL-T"
 Rename  "$INSTDIR\wl\WaspLib-master" "$INSTDIR\Includes\WaspLib"
 
-RmDir "$INSTDIR\srlt"
-RmDir "$INSTDIR\wl"
-RmDir "$INSTDIR\Includes\SRL-T\.github"
-RmDir "$INSTDIR\Includes\WaspLib\.github"
+RmDir /r "$INSTDIR\srlt"
+RmDir /r "$INSTDIR\wl"
+RmDir /r "$INSTDIR\Includes\SRL-T\.github"
+RmDir /r "$INSTDIR\Includes\WaspLib\.github"
 
 Delete "$INSTDIR\srlt.zip"
 Delete "$INSTDIR\wl.zip"
-
 Delete "$INSTDIR\Includes\SRL-T\.gitattributes"
 Delete "$INSTDIR\Includes\WaspLib\.gitattributes"
-
 Delete "$INSTDIR\Includes\SRL-T\.gitignore"
 Delete "$INSTDIR\Includes\WaspLib\.gitignore"
-
 Delete "$INSTDIR\Includes\SRL-T\.simbapackage"
 Delete "$INSTDIR\Includes\WaspLib\.simbapackage"
 
@@ -140,9 +138,7 @@ WriteUninstaller "$INSTDIR\uninstall.exe"
 !ifdef REG_START_MENU
 !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
 CreateDirectory "$SMPROGRAMS\$SM_Folder"
-CreateShortCut "$SMPROGRAMS\$SM_Folder\Simba32.lnk" "$INSTDIR\Simba32.exe"
 CreateShortCut "$SMPROGRAMS\$SM_Folder\Simba64.lnk" "$INSTDIR\Simba64.exe"
-CreateShortCut "$DESKTOP\Simba32.lnk" "$INSTDIR\Simba32.exe"
 CreateShortCut "$DESKTOP\Simba64.lnk" "$INSTDIR\Simba64.exe"
 CreateShortCut "$SMPROGRAMS\$SM_Folder\Uninstall Simba.lnk" "$INSTDIR\uninstall.exe"
 
@@ -155,9 +151,7 @@ CreateShortCut "$SMPROGRAMS\$SM_Folder\Simba Website.lnk" "$INSTDIR\Simba websit
 
 !ifndef REG_START_MENU
 CreateDirectory "$SMPROGRAMS\Simba"
-CreateShortCut "$SMPROGRAMS\Simba\Simba32.lnk" "$INSTDIR\Simba32.exe"
 CreateShortCut "$SMPROGRAMS\Simba\Simba64.lnk" "$INSTDIR\Simba64.exe"
-CreateShortCut "$DESKTOP\Simba32.lnk" "$INSTDIR\Simba32.exe"
 CreateShortCut "$DESKTOP\Simba64.lnk" "$INSTDIR\Simba64.exe"
 CreateShortCut "$DESKTOP\SimbaFolder.lnk" "$INSTDIR\"
 CreateShortCut "$SMPROGRAMS\Simba\Uninstall Simba.lnk" "$INSTDIR\uninstall.exe"
@@ -168,14 +162,12 @@ CreateShortCut "$SMPROGRAMS\Simba\Simba Website.lnk" "$INSTDIR\Simba website.url
 !endif
 !endif
 
-WriteRegStr ${REG_ROOT} "${REG_PATH}" "" "$INSTDIR\Simba32.exe"
 WriteRegStr ${REG_ROOT} "${REG_PATH}" "" "$INSTDIR\Simba64.exe"
-WriteRegStr ${REG_ROOT} "${UNINSTALL_PATH}"  "DisplayName" "Simba"
-WriteRegStr ${REG_ROOT} "${UNINSTALL_PATH}"  "UninstallString" "$INSTDIR\uninstall.exe"
-WriteRegStr ${REG_ROOT} "${UNINSTALL_PATH}"  "DisplayIcon" "$INSTDIR\Simba32.exe"
-WriteRegStr ${REG_ROOT} "${UNINSTALL_PATH}"  "DisplayIcon" "$INSTDIR\Simba64.exe"
-WriteRegStr ${REG_ROOT} "${UNINSTALL_PATH}"  "DisplayVersion" "${VERSION}"
-WriteRegStr ${REG_ROOT} "${UNINSTALL_PATH}"  "Publisher" "${GROUP}"
+WriteRegStr ${REG_ROOT} "${UNINSTALL_PATH}" "DisplayName" "Simba"
+WriteRegStr ${REG_ROOT} "${UNINSTALL_PATH}" "UninstallString" "$INSTDIR\uninstall.exe"
+WriteRegStr ${REG_ROOT} "${UNINSTALL_PATH}" "DisplayIcon" "$INSTDIR\Simba64.exe"
+WriteRegStr ${REG_ROOT} "${UNINSTALL_PATH}" "DisplayVersion" "${VERSION}"
+WriteRegStr ${REG_ROOT} "${UNINSTALL_PATH}" "Publisher" "${GROUP}"
 
 !ifdef WEB_SITE
 WriteRegStr ${REG_ROOT} "${UNINSTALL_PATH}"  "URLInfoAbout" "${WEB_SITE}"
@@ -186,23 +178,18 @@ SectionEnd
 
 Section Uninstall
 ${INSTALL_TYPE}
+
 Delete "$INSTDIR\Simba.exe"
 Delete "$INSTDIR\Simba32.exe"
 Delete "$INSTDIR\Simba64.exe"
 Delete "$INSTDIR\Data\settings.ini"
 Delete "$INSTDIR\COPYING"
+Delete "$INSTDIR\uninstall.exe"
 
 RmDir /r "$INSTDIR\Data\packages"
 RmDir /r "$INSTDIR\Includes"
 RmDir /r "$INSTDIR\Fonts"
 RmDir /r "$INSTDIR\Scripts"
-
-Delete "$INSTDIR\uninstall.exe"
-!ifdef WEB_SITE
-Delete "$INSTDIR\Simba website.url"
-!endif
-
-#RmDir "$INSTDIR"
 
 !ifdef REG_START_MENU
 !insertmacro MUI_STARTMENU_GETFOLDER "Application" $SM_Folder
