@@ -1,3 +1,12 @@
+## [0.9.8](https://github.com/Torwent/wasp-setup/compare/v0.9.7...v0.9.8) (2025-05-23)
+
+
+### Bug Fixes
+
+* compile the new .exe ([199d1c9](https://github.com/Torwent/wasp-setup/commit/199d1c96fe4fc31beb61d7a5edda541517c57b95))
+
+
+
 ## [0.9.7](https://github.com/Torwent/wasp-setup/compare/v0.9.6...v0.9.7) (2025-04-08)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * move installdir back to localappdata ([bdda3be](https://github.com/Torwent/wasp-setup/commit/bdda3be9561802c2b17f62db599e60ffd31370f3))
-
-
-
-## [0.9.3](https://github.com/Torwent/wasp-setup/compare/v0.9.2...v0.9.3) (2025-02-22)
-
-
-### Bug Fixes
-
-* force bump ([83659d5](https://github.com/Torwent/wasp-setup/commit/83659d591c5ca2a5a6fc11c6b018c99abb3a7dfe))
 
 
 
