@@ -1,3 +1,12 @@
+# [0.10.0](https://github.com/Torwent/wasp-setup/compare/v0.9.8...v0.10.0) (2025-05-27)
+
+
+### Features
+
+* rust installer ([890eb1c](https://github.com/Torwent/wasp-setup/commit/890eb1c492e3aebd58b4fd71503c45f51d229e08))
+
+
+
 ## [0.9.8](https://github.com/Torwent/wasp-setup/compare/v0.9.7...v0.9.8) (2025-05-23)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * remove powershell script that messes with the antivirus ([f6c0dc7](https://github.com/Torwent/wasp-setup/commit/f6c0dc714f6515134ff5eb92305698dd20a60e7b))
-
-
-
-## [0.9.4](https://github.com/Torwent/wasp-setup/compare/v0.9.3...v0.9.4) (2025-02-27)
-
-
-### Bug Fixes
-
-* move installdir back to localappdata ([bdda3be](https://github.com/Torwent/wasp-setup/commit/bdda3be9561802c2b17f62db599e60ffd31370f3))
 
 
 
