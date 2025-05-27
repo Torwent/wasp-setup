@@ -1,3 +1,12 @@
+# [0.11.0](https://github.com/Torwent/wasp-setup/compare/v0.10.0...v0.11.0) (2025-05-27)
+
+
+### Features
+
+* new installer ([2baf0d7](https://github.com/Torwent/wasp-setup/commit/2baf0d7e9271344d96c9c1f2512a58265abf4f5a))
+
+
+
 # [0.10.0](https://github.com/Torwent/wasp-setup/compare/v0.9.8...v0.10.0) (2025-05-27)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * remove the app variable ([1fae171](https://github.com/Torwent/wasp-setup/commit/1fae17180473404aafa3f9cfe5720ff7276c609e))
-
-
-
-## [0.9.5](https://github.com/Torwent/wasp-setup/compare/v0.9.4...v0.9.5) (2025-03-24)
-
-
-### Bug Fixes
-
-* remove powershell script that messes with the antivirus ([f6c0dc7](https://github.com/Torwent/wasp-setup/commit/f6c0dc714f6515134ff5eb92305698dd20a60e7b))
 
 
 
