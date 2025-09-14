@@ -1,5 +1,5 @@
 use std::{
-    ffi::{OsStr, OsString},
+    ffi::OsString,
     fs::{create_dir_all, remove_dir_all, remove_file, File},
     io::{copy, Cursor, Read, Result, Seek, Write},
     os::windows::ffi::{OsStrExt, OsStringExt},
@@ -12,66 +12,20 @@ use std::{
 };
 
 use windows::{
-    core::{Interface, HSTRING, PCWSTR},
+    core::{HSTRING, PCWSTR, Interface},
     Win32::{
-        Foundation::HWND,
         System::Com::{
             CoCreateInstance, CoInitializeEx, CoTaskMemFree, CoUninitialize, IPersistFile,
-            CLSCTX_ALL, CLSCTX_INPROC_SERVER, COINIT_APARTMENTTHREADED,
+            CLSCTX_INPROC_SERVER, COINIT_APARTMENTTHREADED,
         },
         UI::Shell::{
-            FOLDERID_Desktop, FileOpenDialog, IFileOpenDialog, IShellItem, IShellLinkW,
-            SHCreateItemFromParsingName, SHGetKnownFolderPath, ShellLink, FOS_PICKFOLDERS,
-            KF_FLAG_DEFAULT, SIGDN_FILESYSPATH,
+            FOLDERID_Desktop, IShellLinkW, SHGetKnownFolderPath, ShellLink, KF_FLAG_DEFAULT,
         },
     },
 };
 use zip::ZipArchive;
 
 use crate::InstallMessage;
-
-pub fn pick_folder(start_path: &str) -> PathBuf {
-    unsafe {
-        let _ = CoInitializeEx(Some(null_mut()), COINIT_APARTMENTTHREADED);
-
-        let dialog: IFileOpenDialog = CoCreateInstance(&FileOpenDialog, None, CLSCTX_ALL)
-            .ok()
-            .expect("pick_folder failed: CoCreateInstance");
-
-        dialog
-            .SetOptions(FOS_PICKFOLDERS)
-            .expect("pick_folder failed: SetOptions");
-
-        let wide: Vec<u16> = OsStr::new(start_path)
-            .encode_wide()
-            .chain(std::iter::once(0))
-            .collect();
-
-        let folder: IShellItem = SHCreateItemFromParsingName(PCWSTR(wide.as_ptr()), None)
-            .expect("pick_folder failed: SHCreateItemFromParsingName");
-
-        dialog
-            .SetFolder(&folder)
-            .expect("pick_folder failed: SetFolder");
-        dialog
-            .Show(Some(HWND(null_mut())))
-            .expect("pick_folder failed: Show");
-
-        let result = dialog.GetResult().expect("pick_folder failed: GetResult");
-        let path = result
-            .GetDisplayName(SIGDN_FILESYSPATH)
-            .expect("pick_folder failed: GetDisplayName");
-
-        let path_str = path
-            .to_string()
-            .expect("pick_folder failed: SHCreateItemFromParsingName");
-        CoTaskMemFree(Some(path.0 as *const _));
-
-        CoUninitialize();
-
-        std::path::PathBuf::from(path_str)
-    }
-}
 
 pub fn create_data_files(path: PathBuf, content: &str, tx: &mpsc::Sender<InstallMessage>) -> bool {
     let _ = tx.send(InstallMessage::Status(format!(
@@ -398,7 +352,6 @@ pub fn unzip<R: Read + Seek>(reader: R, target_dir: &Path) -> Result<()> {
             continue;
         };
 
-        // Skip unknown top-level folder
         let rel_path: PathBuf = path.components().skip(1).collect();
         let outpath = target_dir.join(rel_path);
 
