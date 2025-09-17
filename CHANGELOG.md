@@ -1,4 +1,13 @@
-## [0.11.1](https://github.com/Torwent/wasp-setup/compare/v0.11.0...v0.11.1) (2025-09-17)
+## [0.11.2](https://github.com/Torwent/wasp-setup/compare/v0.11.1...v0.11.2) (2025-09-17)
+
+
+### Bug Fixes
+
+* update setup exe ([15b6618](https://github.com/Torwent/wasp-setup/commit/15b6618a50aab8b7a029276e1ba2ebe399f5ff9a))
+
+
+
+## [0.11.1](https://github.com/Torwent/wasp-setup/compare/v0.11.0...v0.11.1) (2025-09-14)
 
 
 ### Bug Fixes
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * compile the new .exe ([199d1c9](https://github.com/Torwent/wasp-setup/commit/199d1c96fe4fc31beb61d7a5edda541517c57b95))
-
-
-
-## [0.9.7](https://github.com/Torwent/wasp-setup/compare/v0.9.6...v0.9.7) (2025-04-08)
-
-
-### Bug Fixes
-
-* update version ([1512d81](https://github.com/Torwent/wasp-setup/commit/1512d814116efa05f90693b4ec441989c7c4901d))
 
 
 
