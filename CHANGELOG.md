@@ -1,3 +1,12 @@
+## [0.11.1](https://github.com/Torwent/wasp-setup/compare/v0.11.0...v0.11.1) (2025-09-17)
+
+
+### Bug Fixes
+
+* fixed install location & silent install ([72130f3](https://github.com/Torwent/wasp-setup/commit/72130f360e95e3b3c48a68d78c9e7b99fa81af96))
+
+
+
 # [0.11.0](https://github.com/Torwent/wasp-setup/compare/v0.10.0...v0.11.0) (2025-05-27)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * update version ([1512d81](https://github.com/Torwent/wasp-setup/commit/1512d814116efa05f90693b4ec441989c7c4901d))
-
-
-
-## [0.9.6](https://github.com/Torwent/wasp-setup/compare/v0.9.5...v0.9.6) (2025-04-08)
-
-
-### Bug Fixes
-
-* remove the app variable ([1fae171](https://github.com/Torwent/wasp-setup/commit/1fae17180473404aafa3f9cfe5720ff7276c609e))
 
 
 
