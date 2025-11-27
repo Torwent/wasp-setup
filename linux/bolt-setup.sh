@@ -28,14 +28,17 @@ fi
 if [ ! -d "cef/dist" ]; then
   mkdir -p cef
   cd cef
-  wget -q --show-progress -O cef_linux.tar.gz \
-    "https://adamcake.com/cef/cef-126.0.6478.183-linux-x86_64-minimal-ungoogled.tar.gz"
-  
-  # Extract and rename top-level directory
-  TOP_DIR=$(tar -tzf cef_linux.tar.gz | head -n 1 | cut -d'/' -f1)
-  tar -xzf cef_linux.tar.gz && mv "$TOP_DIR" dist && rm cef_linux.tar.gz
+
+  wget -q --show-progress -O cef_linux.tar.xz \
+    "https://adamcake.com/cef/cef-139.0.7258.139-linux-x86_64-minimal-ungoogled.tar.xz"
+
+  # Extract the archive in place (it already contains a 'dist' folder)
+  tar -xf cef_linux.tar.xz
+  rm cef_linux.tar.xz
+
   cd ..
 fi
+
 
 # Configure and build
 mkdir -p build
