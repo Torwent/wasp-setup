@@ -1,3 +1,12 @@
+## [0.11.3](https://github.com/Torwent/wasp-setup/compare/v0.11.2...v0.11.3) (2025-12-01)
+
+
+### Bug Fixes
+
+* Change fonts ([9860117](https://github.com/Torwent/wasp-setup/commit/9860117bb32e35178062dc70c34a6684a4d38adc))
+
+
+
 ## [0.11.2](https://github.com/Torwent/wasp-setup/compare/v0.11.1...v0.11.2) (2025-09-17)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * rust installer ([890eb1c](https://github.com/Torwent/wasp-setup/commit/890eb1c492e3aebd58b4fd71503c45f51d229e08))
-
-
-
-## [0.9.8](https://github.com/Torwent/wasp-setup/compare/v0.9.7...v0.9.8) (2025-05-23)
-
-
-### Bug Fixes
-
-* compile the new .exe ([199d1c9](https://github.com/Torwent/wasp-setup/commit/199d1c96fe4fc31beb61d7a5edda541517c57b95))
 
 
 
